@@ -1,4 +1,9 @@
 *{
+    --sage: #98c9a3;
+    --butter: #ffe566;
+    --skylight: #64dfdf;
+    --clay: #e83d04;
+    --pumpkin: #ff6201;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -44,4 +49,43 @@ footer p{
 
 .colors table, th,td{
     border: 1px solid black;
+}
+
+#row1{
+    background-color: gray;
+    color: white;
+}
+
+#row2{
+    background-color: royalblue;
+    color: white;
+}
+
+#row3{
+    background-color: var(--skylight);
+    color: black;
+}
+
+#row4{
+    background-color: var(--sage);
+    color: black;
+}
+
+#row5{
+    background-color: var(--butter);
+    color: black;
+}
+
+#row6{
+    background-color: gold;
+    color: black;
+}
+
+#row7{
+    background-color: var(--clay);
+    color: white;
+}
+
+#row8{
+    background-color: var(--pumpkin);
 }
