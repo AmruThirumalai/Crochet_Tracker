@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Temperature Blanket Layout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+
+    .blanket-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 5px 0;
+      padding: 10px;
+      background-color: #ddd;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .blanket-row:hover {
+      background-color: #ccc;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 300px;
+      border-radius: 8px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <h1>Temperature Blanket Layout</h1>
+  <div id="blanket"></div>
+
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="modalDate"></p>
+      <p id="modalTemp"></p>
+      <p id="modalColor"></p>
+      <p id="modalStatus"></p>
+    </div>
+  </div>
+
+  <script>
+    const blanketContainer = document.getElementById("blanket");
+    const modal = document.getElementById("infoModal");
+    const closeBtn = document.querySelector(".close");
+
+    const modalDate = document.getElementById("modalDate");
+    const modalTemp = document.getElementById("modalTemp");
+    const modalColor = document.getElementById("modalColor");
+    const modalStatus = document.getElementById("modalStatus");
+
+    const getRandomTemp = () => Math.floor(Math.random() * 60 + 20); // Example temps 20-80°F
+    const getColorFromTemp = (temp) => {
+      if (temp < 30) return "#a3c1da";
+      else if (temp < 50) return "#76a5af";
+      else if (temp < 70) return "#ffd966";
+      else return "#f6b26b";
+    };
+
+    const createBlanketRow = (dateStr, temp) => {
+      const row = document.createElement("div");
+      row.className = "blanket-row";
+      row.style.backgroundColor = getColorFromTemp(temp);
+      row.textContent = dateStr;
+
+      row.addEventListener("click", () => {
+        modalDate.textContent = `Date: ${dateStr}`;
+        modalTemp.textContent = `Temperature: ${temp}°F`;
+        modalColor.textContent = `Color: ${getColorFromTemp(temp)}`;
+        modalStatus.textContent = `Status: Not Started`;
+        modal.style.display = "block";
+      });
+
+      return row;
+    };
+
+    const startDate = new Date("2025-01-01");
+    for (let i = 0; i < 365; i++) {
+      const currentDate = new Date(startDate);
+      currentDate.setDate(currentDate.getDate() + i);
+      const dateStr = currentDate.toISOString().split("T")[0];
+      const temp = getRandomTemp();
+      const row = createBlanketRow(dateStr, temp);
+      blanketContainer.appendChild(row);
+    }
+
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    window.onclick = (event) => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+/* margin cannot be auto in the div containers for each section*/
 *{
     --sage: #98c9a3;
     --butter: #ffe566;
@@ -15,7 +16,8 @@ body{
 }
 header{
     text-align: center;
-    border: 1px solid darkblue
+    border: 1px solid purple;
+    margin-bottom: 30px;
 }
 
 .container{
@@ -26,19 +28,22 @@ header{
     width: 25%;
     height: 100vh;
     border: 1px solid black;
-    padding: 10px;
+    padding: 10px 10px 10px 40px;
+    margin: 0 20px;
+
 }
 
 .center-body{
     width: 50%;
-    border: 1px solid black;
+    border: 1px solid green;
+    margin: 0px 20px;
     padding: 10px;
-    margin: 1px 0px;
 }
 
 .right-column{
     width: 25%;
-    border: 1px solid black;
+    border: 1px solid rgb(0, 47, 255);
+    margin: 0px 20px;
     padding: 10px;
 }
 
@@ -74,6 +79,7 @@ footer p{
 #row5{
     background-color: var(--butter);
     color: black;
+    text-align: center;
 }
 
 #row6{
@@ -82,10 +88,16 @@ footer p{
 }
 
 #row7{
+    background-color: var(--pumpkin);
+    color: black;
+}
+
+#row8{
     background-color: var(--clay);
     color: white;
 }
 
-#row8{
-    background-color: var(--pumpkin);
+#row9{
+    background-color: red;
+    color: black;
 }

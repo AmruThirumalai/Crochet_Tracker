@@ -12,7 +12,9 @@
         <p>Track your temperature blanket progress!</p>
     </header>
     <div class="container">
-
+<!-- the left column contains the colors with the color ranges, the year it is, and the blanket layout options
+ 
+-->
         <div class="left-column">
             <div class="colors">
                 Colors Key:
@@ -42,8 +44,7 @@
                                 <td>Sage</td>
                             </tr>
                             <tr id="row5">
-                                <td>51-60</td>
-                                <td>Butter</td>
+                                <td colspan="2">51-60 Butter</td>
                             </tr>
                             <tr id="row6">
                                 <td>61-70</td>
@@ -51,11 +52,11 @@
                             </tr>
                             <tr id="row7">
                                 <td>71-80</td>
-                                <td>Clay</td>
+                                <td>Pumpkin</td>
                             </tr>
                             <tr id="row8">
                                 <td>81-90</td>
-                                <td>Pumpkin</td>
+                                <td>Clay</td>
                             </tr>
                             <tr id="row9">
                                 <td>91-100+</td>
@@ -65,14 +66,32 @@
                     </table>
                 </div>
             </div>
+            <div class="year">
+                <p>Year: </p>
+                <select id="Year" name="Year">
+                    <option value="">select a year</option>
+                    <option value="1">2025</option>
+                    <option value="2">2024</option>
+                    <option value="3">2023</option>
+                    <option value="4">2022</option>
+                </select>
+            </div>
+            <div class="layout-style">
+                <h2>Blanket Layout Style</h2>
+                <select id="layout-style" name="layout-style">
+                    <option value="">Select a style</option>
+                    <option value="1">Row blanket</option>
+                    <option value="2">Square blanket</option>
+                </select>
+            </div>
         </div>
 
         <div class="center-body">
 
         </div>
-
+           <!-- will have all the filters, like by month, by date, by week, done, in progress, not started -->
         <div class="right-column">
-
+ 
         </div>
     </div>
     <footer>
