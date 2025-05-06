@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f0f0f0;
+    color: #333;
+}
+header{
+    text-align: center;
+    border: 1px solid darkblue
+}
+
+.container{
+    display: flex;
+}
+
+.left-column{
+    width: 25%;
+    height: 100vh;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.center-body{
+    width: 50%;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 1px 0px;
+}
+
+.right-column{
+    width: 25%;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+footer p{
+    text-align: center;
+    font-size: 14px;
+}
+
+.colors table, th,td{
+    border: 1px solid black;
+}
