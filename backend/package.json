@@ -1,0 +1,23 @@
+{
+  "name": "crochet-blanket-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Crochet Temperature Blanket Tracker",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "fetch-weather": "node scripts/fetchWeather2025.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["crochet", "temperature", "blanket", "weather"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
