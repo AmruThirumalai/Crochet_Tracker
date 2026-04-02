@@ -4,7 +4,7 @@ A beautiful, intuitive web application to help crocheters track their temperatur
 
 ## Overview
 
-This app provides a clear, visual, low-friction way to monitor your temperature blanket progress and reference color assignments throughout the year.
+This app provides a clear, visual, low-friction way to monitor your temperature blanket progress and reference color assignments throughout the year. This is an ongoing project that I will keep implementing new features as I learn to code those features.
 
 
 ## Implemented Features
