@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Check, X } from 'lucide-react';
+import { Check, X, ChevronDown, ChevronUp, Printer, Moon, Sun, Settings } from 'lucide-react';
 
 const CrochetTempTracker = () => {
   const [year, setYear] = useState(2025);
@@ -8,11 +8,32 @@ const CrochetTempTracker = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [weatherLoaded, setWeatherLoaded] = useState(false);
+  const [showColorLegend, setShowColorLegend] = useState(true);
+  const [showSettings, setShowSettings] = useState(false);
+  const [filter, setFilter] = useState('all');
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem('blanket-dark-mode');
+    return saved ? JSON.parse(saved) : false;
+  });
+  const [monthDividers, setMonthDividers] = useState(() => {
+    const saved = localStorage.getItem('blanket-month-dividers');
+    return saved ? JSON.parse(saved) : false;
+  });
 
-  // API endpoint - update this to match your backend URL
+  useEffect(() => {
+    localStorage.setItem('blanket-dark-mode', JSON.stringify(darkMode));
+  }, [darkMode]);
+
+  useEffect(() => {
+    localStorage.setItem('blanket-month-dividers', JSON.stringify(monthDividers));
+  }, [monthDividers]);
+
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
-  // Color mapping function - matches backend logic
+  const handlePrint = () => {
+    window.print();
+  };
+
   const getColorForTemp = (temp) => {
     if (temp < 20) return { name: 'Gray', hex: '#9CA3AF' };
     if (temp < 30) return { name: 'Royal Blue', hex: '#2563EB' };
@@ -25,9 +46,8 @@ const CrochetTempTracker = () => {
     return { name: 'Red', hex: '#DC2626' };
   };
 
-  // Initialize days for the year
   useEffect(() => {
-    const initDays = async () => {
+    const initDays = () => {
       const daysInYear = [];
       for (let month = 0; month < 12; month++) {
         const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -44,19 +64,30 @@ const CrochetTempTracker = () => {
         }
       }
       
-      // Load saved completion data from localStorage
       try {
-        const savedData = localStorage.getItem('blanket-completion-2025');
-        if (savedData) {
-          const parsed = JSON.parse(savedData);
-          const mergedDays = daysInYear.map(day => {
-            const saved = parsed.find(d => d.date === day.date);
+        const savedWeatherData = localStorage.getItem('blanket-weather-2025');
+        const savedCompletionData = localStorage.getItem('blanket-completion-2025');
+        
+        let mergedDays = daysInYear;
+        
+        if (savedWeatherData) {
+          const weatherParsed = JSON.parse(savedWeatherData);
+          mergedDays = mergedDays.map(day => {
+            const saved = weatherParsed.find(d => d.date === day.date);
+            return saved ? { ...day, temp: saved.temp, color: saved.color } : day;
+          });
+          setWeatherLoaded(true);
+        }
+        
+        if (savedCompletionData) {
+          const completionParsed = JSON.parse(savedCompletionData);
+          mergedDays = mergedDays.map(day => {
+            const saved = completionParsed.find(d => d.date === day.date);
             return saved ? { ...day, completed: saved.completed } : day;
           });
-          setDays(mergedDays);
-        } else {
-          setDays(daysInYear);
         }
+        
+        setDays(mergedDays);
       } catch (err) {
         console.error('Error loading saved data:', err);
         setDays(daysInYear);
@@ -66,7 +97,6 @@ const CrochetTempTracker = () => {
     initDays();
   }, [year]);
 
-  // Save completion data whenever it changes
   useEffect(() => {
     if (days.length > 0) {
       try {
@@ -81,7 +111,6 @@ const CrochetTempTracker = () => {
     }
   }, [days]);
 
-  // Load weather data from backend API
   const loadWeatherData = async () => {
     setLoading(true);
     setError(null);
@@ -97,7 +126,6 @@ const CrochetTempTracker = () => {
       const result = await response.json();
       const weatherData = result.data;
       
-      // Update days with weather data from backend
       const updatedDays = days.map(day => {
         const weatherEntry = weatherData.find(w => w.date === day.date);
         if (weatherEntry) {
@@ -113,6 +141,20 @@ const CrochetTempTracker = () => {
       
       setDays(updatedDays);
       setWeatherLoaded(true);
+      
+      try {
+        const weatherDataToSave = updatedDays
+          .filter(d => d.temp !== null)
+          .map(d => ({
+            date: d.date,
+            temp: d.temp,
+            color: d.color
+          }));
+        localStorage.setItem('blanket-weather-2025', JSON.stringify(weatherDataToSave));
+      } catch (saveErr) {
+        console.error('Failed to save weather data to localStorage:', saveErr);
+      }
+      
     } catch (err) {
       setError(err.message || 'Unable to load weather data. Make sure the backend server is running.');
       console.error('Error loading weather data:', err);
@@ -122,9 +164,30 @@ const CrochetTempTracker = () => {
   };
 
   const toggleComplete = (dateStr) => {
-    setDays(days.map(day => 
-      day.date === dateStr ? { ...day, completed: !day.completed } : day
-    ));
+    const day = displayDays.find(d => d.date === dateStr);
+    
+    if (day && day.isDivider) {
+      const savedDividers = localStorage.getItem('blanket-dividers-2025');
+      let dividers = savedDividers ? JSON.parse(savedDividers) : [];
+      
+      const existingIndex = dividers.findIndex(d => d.id === dateStr);
+      if (existingIndex >= 0) {
+        dividers[existingIndex].completed = !dividers[existingIndex].completed;
+      } else {
+        dividers.push({ id: dateStr, completed: true });
+      }
+      
+      localStorage.setItem('blanket-dividers-2025', JSON.stringify(dividers));
+      
+      setDays([...days]);
+    } else {
+      setDays(prevDays => {
+        const updatedDays = prevDays.map(day => 
+          day.date === dateStr ? { ...day, completed: !day.completed } : day
+        );
+        return updatedDays;
+      });
+    }
   };
 
   const formatDate = (dateStr) => {
@@ -161,25 +224,106 @@ const CrochetTempTracker = () => {
   const completedCount = days.filter(d => d.completed).length;
   const progressPercent = days.length > 0 ? Math.round((completedCount / days.length) * 100) : 0;
 
+  const getDaysWithDividers = () => {
+    if (!monthDividers) return days;
+    
+    const daysWithDividers = [];
+    days.forEach((day, index) => {
+      daysWithDividers.push(day);
+      
+      const nextDay = days[index + 1];
+      if (nextDay) {
+        const currentMonth = new Date(day.date + 'T00:00:00').getMonth();
+        const nextMonth = new Date(nextDay.date + 'T00:00:00').getMonth();
+        
+        if (currentMonth !== nextMonth) {
+          const dividerId = `${day.date}-divider`;
+          const savedDividers = localStorage.getItem('blanket-dividers-2025');
+          let dividerCompleted = false;
+          
+          if (savedDividers) {
+            const parsed = JSON.parse(savedDividers);
+            const saved = parsed.find(d => d.id === dividerId);
+            if (saved) dividerCompleted = saved.completed;
+          }
+          
+          daysWithDividers.push({
+            date: dividerId,
+            dateObj: new Date(day.date + 'T00:00:00'),
+            temp: null,
+            color: { name: 'White (Month Divider)', hex: '#FFFFFF' },
+            completed: dividerCompleted,
+            isDivider: true
+          });
+        }
+      }
+    });
+    
+    return daysWithDividers;
+  };
+
+  const displayDays = getDaysWithDividers();
+
+  const filteredDays = displayDays.filter(day => {
+    if (day.isDivider) return true;
+    if (filter === 'completed') return day.completed;
+    if (filter === 'incomplete') return !day.completed;
+    return true;
+  });
+
+  const colorLegendItems = [
+    { name: 'Gray', hex: '#9CA3AF', range: '< 20°F' },
+    { name: 'Royal Blue', hex: '#2563EB', range: '20-29°F' },
+    { name: 'Skylight', hex: '#7DD3FC', range: '30-39°F' },
+    { name: 'Sage', hex: '#86EFAC', range: '40-49°F' },
+    { name: 'Butter', hex: '#FDE047', range: '50-59°F' },
+    { name: 'Gold', hex: '#FBBF24', range: '60-69°F' },
+    { name: 'Pumpkin', hex: '#FB923C', range: '70-79°F' },
+    { name: 'Clay', hex: '#B45309', range: '80-89°F' },
+    { name: 'Red', hex: '#DC2626', range: '90°F+' }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
-      <div className="max-w-2xl mx-auto">
-        {/* Header */}
-        <div className="bg-white rounded-2xl shadow-sm p-6 mb-6">
-          <h1 className="text-3xl font-bold text-slate-800 mb-2">
-            Temperature Blanket Tracker
-          </h1>
-          <p className="text-slate-600 mb-4">
+    <div className={`min-h-screen p-4 transition-colors ${darkMode ? 'bg-gradient-to-br from-slate-900 to-slate-800' : 'bg-gradient-to-br from-slate-50 to-blue-50'}`}>
+      <style>{`
+        @media print {
+          body {
+            background: white !important;
+          }
+          .no-print {
+            display: none !important;
+          }
+          .print-container {
+            max-width: 100% !important;
+            padding: 0 !important;
+          }
+        }
+      `}</style>
+      
+      <div className="max-w-2xl mx-auto print-container">
+        <div className={`rounded-2xl shadow-sm p-6 mb-6 ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
+          <div className="flex items-center justify-between mb-2">
+            <h1 className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+              Temperature Blanket Tracker
+            </h1>
+            <button
+              onClick={() => setShowSettings(!showSettings)}
+              className={`no-print p-2 rounded-lg transition-colors ${darkMode ? 'bg-slate-700 hover:bg-slate-600' : 'bg-slate-100 hover:bg-slate-200'}`}
+              title="Settings"
+            >
+              <Settings className={`w-5 h-5 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`} />
+            </button>
+          </div>
+          <p className={darkMode ? 'text-slate-300 mb-4' : 'text-slate-600 mb-4'}>
             Track your daily crochet progress for {year}
           </p>
           
-          {/* Progress Bar */}
           <div className="mb-4">
-            <div className="flex justify-between text-sm text-slate-600 mb-2">
+            <div className={`flex justify-between text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
               <span>{completedCount} of {days.length} rows completed</span>
               <span>{progressPercent}%</span>
             </div>
-            <div className="w-full h-3 bg-slate-200 rounded-full overflow-hidden">
+            <div className={`w-full h-3 rounded-full overflow-hidden ${darkMode ? 'bg-slate-700' : 'bg-slate-200'}`}>
               <div 
                 className="h-full bg-gradient-to-r from-blue-400 to-blue-500 transition-all duration-500"
                 style={{ width: `${progressPercent}%` }}
@@ -187,168 +331,293 @@ const CrochetTempTracker = () => {
             </div>
           </div>
 
-          {/* Load Weather Button */}
-          {!weatherLoaded && (
-            <button
-              onClick={loadWeatherData}
-              disabled={loading}
-              className="w-full bg-blue-500 hover:bg-blue-600 disabled:bg-slate-300 text-white font-medium py-3 px-4 rounded-lg transition-colors"
-            >
-              {loading ? 'Loading Weather Data...' : 'Load Weather Data'}
-            </button>
-          )}
+          <div className="no-print">
+            {!weatherLoaded && (
+              <button
+                onClick={loadWeatherData}
+                disabled={loading}
+                className={`w-full font-medium py-3 px-4 rounded-lg transition-colors ${
+                  darkMode 
+                    ? 'bg-blue-600 hover:bg-blue-700 disabled:bg-slate-700 text-white'
+                    : 'bg-blue-500 hover:bg-blue-600 disabled:bg-slate-300 text-white'
+                }`}
+              >
+                {loading ? 'Loading Weather Data...' : 'Load Weather Data'}
+              </button>
+            )}
           
-          {error && (
-            <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-              {error}
+            {weatherLoaded && (
+              <div className={`flex items-center justify-between p-3 rounded-lg border ${
+                darkMode 
+                  ? 'bg-green-900/30 border-green-700'
+                  : 'bg-green-50 border-green-200'
+              }`}>
+                <div className="flex items-center gap-2">
+                  <Check className={`w-5 h-5 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
+                  <span className={`font-medium ${darkMode ? 'text-green-300' : 'text-green-700'}`}>Weather data loaded</span>
+                </div>
+                <button
+                  onClick={loadWeatherData}
+                  disabled={loading}
+                  className={`text-sm underline ${darkMode ? 'text-green-300 hover:text-green-200' : 'text-green-700 hover:text-green-800'}`}
+                >
+                  Refresh
+                </button>
+              </div>
+            )}
+          
+            {error && (
+              <div className={`mt-4 p-3 rounded-lg border text-sm ${
+                darkMode
+                  ? 'bg-red-900/30 border-red-700 text-red-300'
+                  : 'bg-red-50 border-red-200 text-red-700'
+              }`}>
+                {error}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {showSettings && (
+          <div className={`rounded-2xl shadow-sm p-6 mb-6 no-print ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
+            <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-slate-800'}`}>Settings</h2>
+            
+            <div className="space-y-3">
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className={`w-full flex items-center justify-between p-4 rounded-lg transition-colors ${
+                  darkMode ? 'bg-slate-700 hover:bg-slate-600' : 'bg-slate-100 hover:bg-slate-200'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  {darkMode ? <Moon className="w-5 h-5 text-blue-400" /> : <Sun className="w-5 h-5 text-yellow-500" />}
+                  <div className="text-left">
+                    <div className={`font-medium ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+                      {darkMode ? 'Dark Mode' : 'Light Mode'}
+                    </div>
+                    <div className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                      {darkMode ? 'Switch to light theme' : 'Switch to dark theme'}
+                    </div>
+                  </div>
+                </div>
+                <ChevronDown className={`w-5 h-5 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`} />
+              </button>
+
+              <button
+                onClick={handlePrint}
+                className={`w-full flex items-center justify-between p-4 rounded-lg transition-colors ${
+                  darkMode ? 'bg-slate-700 hover:bg-slate-600' : 'bg-slate-100 hover:bg-slate-200'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <Printer className={`w-5 h-5 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`} />
+                  <div className="text-left">
+                    <div className={`font-medium ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+                      Print View
+                    </div>
+                    <div className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                      Print or export your blanket tracker
+                    </div>
+                  </div>
+                </div>
+                <ChevronDown className={`w-5 h-5 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`} />
+              </button>
+
+              <button
+                onClick={() => setMonthDividers(!monthDividers)}
+                className={`w-full flex items-center justify-between p-4 rounded-lg transition-colors ${
+                  darkMode ? 'bg-slate-700 hover:bg-slate-600' : 'bg-slate-100 hover:bg-slate-200'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${
+                    monthDividers 
+                      ? 'bg-blue-500 border-blue-500' 
+                      : darkMode 
+                        ? 'border-slate-500' 
+                        : 'border-slate-400'
+                  }`}>
+                    {monthDividers && <Check className="w-3 h-3 text-white" />}
+                  </div>
+                  <div className="text-left">
+                    <div className={`font-medium ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+                      Month Dividers
+                    </div>
+                    <div className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                      Add white rows between months
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+        )}
+
+        <div className={`rounded-2xl shadow-sm p-6 mb-6 no-print ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
+          <h2 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-slate-800'}`}>Filter Days</h2>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setFilter('all')}
+              className={`flex-1 py-2 px-4 rounded-lg font-medium transition-colors ${
+                filter === 'all'
+                  ? 'bg-blue-500 text-white'
+                  : darkMode
+                    ? 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              }`}
+            >
+              All ({days.length})
+            </button>
+            <button
+              onClick={() => setFilter('incomplete')}
+              className={`flex-1 py-2 px-4 rounded-lg font-medium transition-colors ${
+                filter === 'incomplete'
+                  ? 'bg-blue-500 text-white'
+                  : darkMode
+                    ? 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              }`}
+            >
+              To Do ({days.length - completedCount})
+            </button>
+            <button
+              onClick={() => setFilter('completed')}
+              className={`flex-1 py-2 px-4 rounded-lg font-medium transition-colors ${
+                filter === 'completed'
+                  ? 'bg-blue-500 text-white'
+                  : darkMode
+                    ? 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              }`}
+            >
+              Done ({completedCount})
+            </button>
+          </div>
+        </div>
+
+        <div className={`rounded-2xl shadow-sm mb-6 ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
+          <button
+            onClick={() => setShowColorLegend(!showColorLegend)}
+            className={`w-full flex items-center justify-between p-6 text-left transition-colors rounded-2xl ${
+              darkMode ? 'hover:bg-slate-700' : 'hover:bg-slate-50'
+            }`}
+          >
+            <h2 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-slate-800'}`}>Yarn Color Guide</h2>
+            {showColorLegend ? (
+              <ChevronUp className={`w-5 h-5 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`} />
+            ) : (
+              <ChevronDown className={`w-5 h-5 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`} />
+            )}
+          </button>
+          
+          {showColorLegend && (
+            <div className="px-6 pb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {colorLegendItems.map((item) => (
+                  <div key={item.name} className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-lg border-2 border-slate-200 flex-shrink-0" style={{ backgroundColor: item.hex }} />
+                    <div>
+                      <div className={`font-medium ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>{item.name}</div>
+                      <div className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>{item.range}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>
 
-          {/* Color legend */}
-          <div className='big-white rounded-2xl shadow-sm p-6 mb-6'>
-            <h2 className='text-xl font-semibold text-slate-800 mb-4'>Yarn Color Guide</h2>
-            <div className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
-              <div className='flex items-center gap-3'>
-                <div className='w-12 h-12 rounded-lg border-2 border-slate-200 flex-shrink-0' style={{ backgroundColor: '#9CA3AF' }} />
-                <div>
-                  <div className='font-medium text-slate-800'>Gray</div>
-                  <div className='text-sm text-slate-600'>&lt; 20°F</div>
-                </div>
-            </div>
-              <div className='flex items-center gap-3'>
-                <div className='w-12 h-12 rounded-lg border-2 border-slate-200 flex-shrink-0' style={{ backgroundColor: '#2563EB' }} />
-                <div>
-                  <div className='font-medium text-slate-800'>Royal Blue</div>
-                  <div className='text-sm text-slate-600'>20°F - 29°F</div>
-                </div>
-            </div>
-              <div className='flex items-center gap-3'>
-                <div className='w-12 h-12 rounded-lg border-2 border-slate-200 flex-shrink-0' style={{ backgroundColor: '#7DD3FC' }} />
-                <div>
-                  <div className='font-medium text-slate-800'>Skylight</div>
-                  <div className='text-sm text-slate-600'>30°F - 39°F</div>
-                </div>
-            </div>
-              <div className='flex items-center gap-3'>
-                <div className='w-12 h-12 rounded-lg border-2 border-slate-200 flex-shrink-0' style={{ backgroundColor: '#86EFAC' }} />
-                <div>
-                  <div className='font-medium text-slate-800'>Sage</div>
-                  <div className='text-sm text-slate-600'>40°F - 49°F</div>
-                </div>
-            </div>
-              <div className='flex items-center gap-3'>
-                <div className='w-12 h-12 rounded-lg border-2 border-slate-200 flex-shrink-0' style={{ backgroundColor: '#FDE047' }} />
-                <div>
-                  <div className='font-medium text-slate-800'>Butter</div>
-                  <div className='text-sm text-slate-600'>50°F - 59°F</div>
-                </div>
-            </div>
-              <div className='flex items-center gap-3'>
-                <div className='w-12 h-12 rounded-lg border-2 border-slate-200 flex-shrink-0' style={{ backgroundColor: '#FBBF24' }} />
-                <div>
-                  <div className='font-medium text-slate-800'>Gold</div>
-                  <div className='text-sm text-slate-600'>60°F - 69°F</div>
-                </div>
-            </div>
-              <div className='flex items-center gap-3'>
-                <div className='w-12 h-12 rounded-lg border-2 border-slate-200 flex-shrink-0' style={{ backgroundColor: '#FB923C' }} />
-                <div>
-                  <div className='font-medium text-slate-800'>Pumpkin</div>
-                  <div className='text-sm text-slate-600'>70°F - 79°F</div>
-                </div>
-            </div>
-              <div className='flex items-center gap-3'>
-                <div className='w-12 h-12 rounded-lg border-2 border-slate-200 flex-shrink-0' style={{ backgroundColor: '#B45309' }} />
-                <div>
-                  <div className='font-medium text-slate-800'>Clay</div>
-                  <div className='text-sm text-slate-600'>80°F - 89°F</div>
-                </div>
-            </div>
-              <div className='flex items-center gap-3'>
-                <div className='w-12 h-12 rounded-lg border-2 border-slate-200 flex-shrink-0' style={{ backgroundColor: '#DC2626' }} />
-                <div>
-                  <div className='font-medium text-slate-800'>Red</div>
-                  <div className='text-sm text-slate-600'>&ge; 90°F</div>
-                </div>
-            </div>
-            </div>
-          </div>
-
-        {/* Days List */}
         <div className="space-y-2 pb-8">
-          {days.map((day, index) => (
-            <React.Fragment key={day.date}>
-              {isFirstDayOfMonth(index) && (
-                <div className="pt-4 pb-2">
-                  <h2 className="text-lg font-semibold text-slate-700 px-2">
-                    {getMonthName(day.date)}
-                  </h2>
-                </div>
-              )}
+          {filteredDays.map((day) => {
+            const originalIndex = days.findIndex(d => d.date === day.date);
+            const isMonthDivider = day.isDivider;
+            
+            return (
+              <React.Fragment key={day.date}>
+                {!isMonthDivider && isFirstDayOfMonth(originalIndex) && (
+                  <div className="pt-4 pb-2">
+                    <h2 className={`text-lg font-semibold px-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+                      {getMonthName(day.date)}
+                    </h2>
+                  </div>
+                )}
               
-              <div
-                onClick={() => setSelectedDay(day)}
-                className={`bg-white rounded-xl shadow-sm p-4 cursor-pointer hover:shadow-md transition-all ${
-                  day.completed ? 'opacity-60' : ''
-                }`}
-              >
-                <div className="flex items-center gap-4">
-                  {/* Color Swatch */}
-                  <div 
-                    className="w-16 h-16 rounded-lg flex-shrink-0 border-2 border-slate-200"
-                    style={{ 
-                      backgroundColor: day.color ? day.color.hex : '#f1f5f9'
-                    }}
-                  />
+                <div
+                  onClick={() => setSelectedDay(day)}
+                  className={`rounded-xl shadow-sm p-4 cursor-pointer hover:shadow-md transition-all ${
+                    darkMode ? 'bg-slate-800 hover:bg-slate-750' : 'bg-white'
+                  } ${day.completed ? 'opacity-60' : ''}`}
+                >
+                  <div className="flex items-center gap-4">
+                    <div 
+                      className={`w-16 h-16 rounded-lg flex-shrink-0 border-2 ${
+                        isMonthDivider ? 'border-slate-300' : 'border-slate-200'
+                      }`}
+                      style={{ 
+                        backgroundColor: day.color 
+                          ? day.color.hex 
+                          : (darkMode ? '#334155' : '#f1f5f9')
+                      }}
+                    />
                   
-                  {/* Day Info */}
-                  <div className="flex-1 min-w-0">
-                    <div className={`font-medium text-slate-800 ${day.completed ? 'line-through' : ''}`}>
-                      {formatDate(day.date)}
+                    <div className="flex-1 min-w-0">
+                      {isMonthDivider ? (
+                        <>
+                          <div className={`font-medium ${day.completed ? 'line-through' : ''} ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>
+                            Month Divider
+                          </div>
+                          <div className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                            White • Separator Row
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className={`font-medium ${day.completed ? 'line-through' : ''} ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>
+                            {formatDate(day.date)}
+                          </div>
+                          {day.color && (
+                            <div className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                              {day.temp}°F • {day.color.name}
+                            </div>
+                          )}
+                          {!day.color && (
+                            <div className={`text-sm ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>
+                              No data yet
+                            </div>
+                          )}
+                        </>
+                      )}
                     </div>
-                    {day.color && (
-                      <div className="text-sm text-slate-600">
-                        {day.temp}°F • {day.color.name}
-                      </div>
-                    )}
-                    {!day.color && (
-                      <div className="text-sm text-slate-400">
-                        No data yet
+                  
+                    {day.completed && (
+                      <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                        <Check className="w-4 h-4 text-white" />
                       </div>
                     )}
                   </div>
-                  
-                  {/* Completion Check */}
-                  {day.completed && (
-                    <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                      <Check className="w-4 h-4 text-white" />
-                    </div>
-                  )}
                 </div>
-              </div>
-            </React.Fragment>
-          ))}
+              </React.Fragment>
+            );
+          })}
         </div>
       </div>
 
-      {/* Day Detail Modal */}
       {selectedDay && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
           onClick={() => setSelectedDay(null)}
         >
           <div 
-            className="bg-white rounded-2xl shadow-xl max-w-md w-full p-6"
+            className={`rounded-2xl shadow-xl max-w-md w-full p-6 ${darkMode ? 'bg-slate-800' : 'bg-white'}`}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-start mb-4">
-              <h3 className="text-xl font-bold text-slate-800">
+              <h3 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-slate-800'}`}>
                 {formatFullDate(selectedDay.date)}
               </h3>
               <button
                 onClick={() => setSelectedDay(null)}
-                className="text-slate-400 hover:text-slate-600"
+                className={darkMode ? 'text-slate-400 hover:text-slate-300' : 'text-slate-400 hover:text-slate-600'}
               >
                 <X className="w-6 h-6" />
               </button>
@@ -362,14 +631,24 @@ const CrochetTempTracker = () => {
                 />
                 
                 <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-slate-600">Temperature:</span>
-                    <span className="font-semibold text-slate-800">{selectedDay.temp}°F</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-600">Yarn Color:</span>
-                    <span className="font-semibold text-slate-800">{selectedDay.color.name}</span>
-                  </div>
+                  {!selectedDay.isDivider && (
+                    <>
+                      <div className="flex justify-between">
+                        <span className={darkMode ? 'text-slate-400' : 'text-slate-600'}>Temperature:</span>
+                        <span className={`font-semibold ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>{selectedDay.temp}°F</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className={darkMode ? 'text-slate-400' : 'text-slate-600'}>Yarn Color:</span>
+                        <span className={`font-semibold ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>{selectedDay.color.name}</span>
+                      </div>
+                    </>
+                  )}
+                  {selectedDay.isDivider && (
+                    <div className="flex justify-between">
+                      <span className={darkMode ? 'text-slate-400' : 'text-slate-600'}>Yarn Color:</span>
+                      <span className={`font-semibold ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>White (Month Divider)</span>
+                    </div>
+                  )}
                 </div>
 
                 <button
@@ -379,7 +658,9 @@ const CrochetTempTracker = () => {
                   }}
                   className={`w-full py-3 px-4 rounded-lg font-medium transition-colors ${
                     selectedDay.completed
-                      ? 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+                      ? darkMode
+                        ? 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                        : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
                       : 'bg-green-500 text-white hover:bg-green-600'
                   }`}
                 >
@@ -387,7 +668,7 @@ const CrochetTempTracker = () => {
                 </button>
               </div>
             ) : (
-              <div className="text-center py-8 text-slate-500">
+              <div className={`text-center py-8 ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
                 <p>No weather data available for this day yet.</p>
                 <p className="text-sm mt-2">Load weather data to see the color assignment.</p>
               </div>

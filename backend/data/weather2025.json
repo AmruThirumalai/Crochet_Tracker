@@ -31,17 +31,17 @@
   },
   {
     "date": "2025-01-07",
-    "temp_f": 28,
+    "temp_f": 27,
     "color_name": "Royal Blue"
   },
   {
     "date": "2025-01-08",
-    "temp_f": 25,
+    "temp_f": 24,
     "color_name": "Royal Blue"
   },
   {
     "date": "2025-01-09",
-    "temp_f": 21,
+    "temp_f": 20,
     "color_name": "Royal Blue"
   },
   {
@@ -86,7 +86,7 @@
   },
   {
     "date": "2025-01-18",
-    "temp_f": 43,
+    "temp_f": 42,
     "color_name": "Sage"
   },
   {
@@ -111,7 +111,7 @@
   },
   {
     "date": "2025-01-23",
-    "temp_f": 38,
+    "temp_f": 37,
     "color_name": "Skylight"
   },
   {
@@ -126,12 +126,12 @@
   },
   {
     "date": "2025-01-26",
-    "temp_f": 43,
+    "temp_f": 42,
     "color_name": "Sage"
   },
   {
     "date": "2025-01-27",
-    "temp_f": 39,
+    "temp_f": 38,
     "color_name": "Skylight"
   },
   {
@@ -191,7 +191,7 @@
   },
   {
     "date": "2025-02-08",
-    "temp_f": 64,
+    "temp_f": 63,
     "color_name": "Gold"
   },
   {
@@ -216,7 +216,7 @@
   },
   {
     "date": "2025-02-13",
-    "temp_f": 41,
+    "temp_f": 40,
     "color_name": "Sage"
   },
   {
@@ -276,7 +276,7 @@
   },
   {
     "date": "2025-02-25",
-    "temp_f": 63,
+    "temp_f": 62,
     "color_name": "Gold"
   },
   {
@@ -286,7 +286,7 @@
   },
   {
     "date": "2025-02-27",
-    "temp_f": 57,
+    "temp_f": 56,
     "color_name": "Butter"
   },
   {
@@ -321,7 +321,7 @@
   },
   {
     "date": "2025-03-06",
-    "temp_f": 45,
+    "temp_f": 44,
     "color_name": "Sage"
   },
   {
@@ -331,8 +331,8 @@
   },
   {
     "date": "2025-03-08",
-    "temp_f": 50,
-    "color_name": "Butter"
+    "temp_f": 49,
+    "color_name": "Sage"
   },
   {
     "date": "2025-03-09",
@@ -356,7 +356,7 @@
   },
   {
     "date": "2025-03-13",
-    "temp_f": 73,
+    "temp_f": 72,
     "color_name": "Pumpkin"
   },
   {
@@ -381,7 +381,7 @@
   },
   {
     "date": "2025-03-18",
-    "temp_f": 71,
+    "temp_f": 70,
     "color_name": "Pumpkin"
   },
   {
@@ -411,7 +411,7 @@
   },
   {
     "date": "2025-03-24",
-    "temp_f": 57,
+    "temp_f": 56,
     "color_name": "Butter"
   },
   {
@@ -421,7 +421,7 @@
   },
   {
     "date": "2025-03-26",
-    "temp_f": 55,
+    "temp_f": 54,
     "color_name": "Butter"
   },
   {
@@ -451,7 +451,7 @@
   },
   {
     "date": "2025-04-01",
-    "temp_f": 55,
+    "temp_f": 54,
     "color_name": "Butter"
   },
   {
@@ -461,18 +461,18 @@
   },
   {
     "date": "2025-04-03",
-    "temp_f": 69,
+    "temp_f": 68,
     "color_name": "Gold"
   },
   {
     "date": "2025-04-04",
-    "temp_f": 69,
+    "temp_f": 68,
     "color_name": "Gold"
   },
   {
     "date": "2025-04-05",
-    "temp_f": 70,
-    "color_name": "Pumpkin"
+    "temp_f": 69,
+    "color_name": "Gold"
   },
   {
     "date": "2025-04-06",
@@ -491,7 +491,7 @@
   },
   {
     "date": "2025-04-09",
-    "temp_f": 55,
+    "temp_f": 54,
     "color_name": "Butter"
   },
   {
@@ -501,7 +501,7 @@
   },
   {
     "date": "2025-04-11",
-    "temp_f": 53,
+    "temp_f": 52,
     "color_name": "Butter"
   },
   {
@@ -511,7 +511,7 @@
   },
   {
     "date": "2025-04-13",
-    "temp_f": 63,
+    "temp_f": 62,
     "color_name": "Gold"
   },
   {
@@ -521,12 +521,12 @@
   },
   {
     "date": "2025-04-15",
-    "temp_f": 56,
+    "temp_f": 55,
     "color_name": "Butter"
   },
   {
     "date": "2025-04-16",
-    "temp_f": 61,
+    "temp_f": 60,
     "color_name": "Gold"
   },
   {
@@ -581,7 +581,7 @@
   },
   {
     "date": "2025-04-27",
-    "temp_f": 64,
+    "temp_f": 63,
     "color_name": "Gold"
   },
   {
@@ -601,7 +601,7 @@
   },
   {
     "date": "2025-05-01",
-    "temp_f": 73,
+    "temp_f": 72,
     "color_name": "Pumpkin"
   },
   {
@@ -611,12 +611,12 @@
   },
   {
     "date": "2025-05-03",
-    "temp_f": 62,
+    "temp_f": 61,
     "color_name": "Gold"
   },
   {
     "date": "2025-05-04",
-    "temp_f": 54,
+    "temp_f": 53,
     "color_name": "Butter"
   },
   {
@@ -626,13 +626,13 @@
   },
   {
     "date": "2025-05-06",
-    "temp_f": 66,
+    "temp_f": 65,
     "color_name": "Gold"
   },
   {
     "date": "2025-05-07",
-    "temp_f": 70,
-    "color_name": "Pumpkin"
+    "temp_f": 69,
+    "color_name": "Gold"
   },
   {
     "date": "2025-05-08",
@@ -661,12 +661,12 @@
   },
   {
     "date": "2025-05-13",
-    "temp_f": 74,
+    "temp_f": 73,
     "color_name": "Pumpkin"
   },
   {
     "date": "2025-05-14",
-    "temp_f": 77,
+    "temp_f": 76,
     "color_name": "Pumpkin"
   },
   {
@@ -676,7 +676,7 @@
   },
   {
     "date": "2025-05-16",
-    "temp_f": 79,
+    "temp_f": 78,
     "color_name": "Pumpkin"
   },
   {
@@ -691,7 +691,7 @@
   },
   {
     "date": "2025-05-19",
-    "temp_f": 77,
+    "temp_f": 76,
     "color_name": "Pumpkin"
   },
   {
@@ -711,12 +711,12 @@
   },
   {
     "date": "2025-05-23",
-    "temp_f": 64,
+    "temp_f": 63,
     "color_name": "Gold"
   },
   {
     "date": "2025-05-24",
-    "temp_f": 69,
+    "temp_f": 68,
     "color_name": "Gold"
   },
   {
@@ -741,7 +741,7 @@
   },
   {
     "date": "2025-05-29",
-    "temp_f": 75,
+    "temp_f": 74,
     "color_name": "Pumpkin"
   },
   {
@@ -761,12 +761,12 @@
   },
   {
     "date": "2025-06-02",
-    "temp_f": 76,
+    "temp_f": 75,
     "color_name": "Pumpkin"
   },
   {
     "date": "2025-06-03",
-    "temp_f": 83,
+    "temp_f": 82,
     "color_name": "Clay"
   },
   {
@@ -801,7 +801,7 @@
   },
   {
     "date": "2025-06-10",
-    "temp_f": 77,
+    "temp_f": 76,
     "color_name": "Pumpkin"
   },
   {
@@ -811,7 +811,7 @@
   },
   {
     "date": "2025-06-12",
-    "temp_f": 83,
+    "temp_f": 82,
     "color_name": "Clay"
   },
   {
@@ -821,7 +821,7 @@
   },
   {
     "date": "2025-06-14",
-    "temp_f": 81,
+    "temp_f": 80,
     "color_name": "Clay"
   },
   {
@@ -846,7 +846,7 @@
   },
   {
     "date": "2025-06-19",
-    "temp_f": 79,
+    "temp_f": 78,
     "color_name": "Pumpkin"
   },
   {
@@ -866,17 +866,17 @@
   },
   {
     "date": "2025-06-23",
-    "temp_f": 91,
+    "temp_f": 90,
     "color_name": "Red"
   },
   {
     "date": "2025-06-24",
-    "temp_f": 93,
+    "temp_f": 92,
     "color_name": "Red"
   },
   {
     "date": "2025-06-25",
-    "temp_f": 92,
+    "temp_f": 91,
     "color_name": "Red"
   },
   {
@@ -896,7 +896,7 @@
   },
   {
     "date": "2025-06-29",
-    "temp_f": 84,
+    "temp_f": 83,
     "color_name": "Clay"
   },
   {
@@ -921,7 +921,7 @@
   },
   {
     "date": "2025-07-04",
-    "temp_f": 88,
+    "temp_f": 87,
     "color_name": "Clay"
   },
   {
@@ -941,7 +941,7 @@
   },
   {
     "date": "2025-07-08",
-    "temp_f": 85,
+    "temp_f": 84,
     "color_name": "Clay"
   },
   {
@@ -951,7 +951,7 @@
   },
   {
     "date": "2025-07-10",
-    "temp_f": 86,
+    "temp_f": 85,
     "color_name": "Clay"
   },
   {
@@ -961,7 +961,7 @@
   },
   {
     "date": "2025-07-12",
-    "temp_f": 92,
+    "temp_f": 91,
     "color_name": "Red"
   },
   {
@@ -1001,7 +1001,7 @@
   },
   {
     "date": "2025-07-20",
-    "temp_f": 87,
+    "temp_f": 86,
     "color_name": "Clay"
   },
   {
@@ -1056,12 +1056,12 @@
   },
   {
     "date": "2025-07-31",
-    "temp_f": 87,
+    "temp_f": 86,
     "color_name": "Clay"
   },
   {
     "date": "2025-08-01",
-    "temp_f": 79,
+    "temp_f": 78,
     "color_name": "Pumpkin"
   },
   {
@@ -1071,7 +1071,7 @@
   },
   {
     "date": "2025-08-03",
-    "temp_f": 81,
+    "temp_f": 80,
     "color_name": "Clay"
   },
   {
@@ -1081,12 +1081,12 @@
   },
   {
     "date": "2025-08-05",
-    "temp_f": 83,
+    "temp_f": 82,
     "color_name": "Clay"
   },
   {
     "date": "2025-08-06",
-    "temp_f": 85,
+    "temp_f": 84,
     "color_name": "Clay"
   },
   {
@@ -1096,12 +1096,12 @@
   },
   {
     "date": "2025-08-08",
-    "temp_f": 88,
+    "temp_f": 87,
     "color_name": "Clay"
   },
   {
     "date": "2025-08-09",
-    "temp_f": 89,
+    "temp_f": 88,
     "color_name": "Clay"
   },
   {
@@ -1131,7 +1131,7 @@
   },
   {
     "date": "2025-08-15",
-    "temp_f": 91,
+    "temp_f": 90,
     "color_name": "Red"
   },
   {
@@ -1141,12 +1141,12 @@
   },
   {
     "date": "2025-08-17",
-    "temp_f": 89,
+    "temp_f": 88,
     "color_name": "Clay"
   },
   {
     "date": "2025-08-18",
-    "temp_f": 91,
+    "temp_f": 90,
     "color_name": "Red"
   },
   {
@@ -1161,13 +1161,13 @@
   },
   {
     "date": "2025-08-21",
-    "temp_f": 80,
-    "color_name": "Clay"
+    "temp_f": 79,
+    "color_name": "Pumpkin"
   },
   {
     "date": "2025-08-22",
-    "temp_f": 80,
-    "color_name": "Clay"
+    "temp_f": 79,
+    "color_name": "Pumpkin"
   },
   {
     "date": "2025-08-23",
@@ -1176,7 +1176,7 @@
   },
   {
     "date": "2025-08-24",
-    "temp_f": 79,
+    "temp_f": 78,
     "color_name": "Pumpkin"
   },
   {
@@ -1191,7 +1191,7 @@
   },
   {
     "date": "2025-08-27",
-    "temp_f": 75,
+    "temp_f": 74,
     "color_name": "Pumpkin"
   },
   {
@@ -1201,8 +1201,8 @@
   },
   {
     "date": "2025-08-29",
-    "temp_f": 80,
-    "color_name": "Clay"
+    "temp_f": 79,
+    "color_name": "Pumpkin"
   },
   {
     "date": "2025-08-30",
@@ -1211,12 +1211,12 @@
   },
   {
     "date": "2025-08-31",
-    "temp_f": 79,
+    "temp_f": 78,
     "color_name": "Pumpkin"
   },
   {
     "date": "2025-09-01",
-    "temp_f": 83,
+    "temp_f": 82,
     "color_name": "Clay"
   },
   {
@@ -1226,8 +1226,8 @@
   },
   {
     "date": "2025-09-03",
-    "temp_f": 80,
-    "color_name": "Clay"
+    "temp_f": 79,
+    "color_name": "Pumpkin"
   },
   {
     "date": "2025-09-04",
@@ -1251,7 +1251,7 @@
   },
   {
     "date": "2025-09-08",
-    "temp_f": 74,
+    "temp_f": 73,
     "color_name": "Pumpkin"
   },
   {
@@ -1261,12 +1261,12 @@
   },
   {
     "date": "2025-09-10",
-    "temp_f": 81,
+    "temp_f": 80,
     "color_name": "Clay"
   },
   {
     "date": "2025-09-11",
-    "temp_f": 85,
+    "temp_f": 84,
     "color_name": "Clay"
   },
   {
@@ -1286,7 +1286,7 @@
   },
   {
     "date": "2025-09-15",
-    "temp_f": 87,
+    "temp_f": 86,
     "color_name": "Clay"
   },
   {
@@ -1296,7 +1296,7 @@
   },
   {
     "date": "2025-09-17",
-    "temp_f": 85,
+    "temp_f": 84,
     "color_name": "Clay"
   },
   {
@@ -1321,7 +1321,7 @@
   },
   {
     "date": "2025-09-22",
-    "temp_f": 78,
+    "temp_f": 77,
     "color_name": "Pumpkin"
   },
   {
@@ -1346,7 +1346,7 @@
   },
   {
     "date": "2025-09-27",
-    "temp_f": 79,
+    "temp_f": 78,
     "color_name": "Pumpkin"
   },
   {
@@ -1356,7 +1356,7 @@
   },
   {
     "date": "2025-09-29",
-    "temp_f": 83,
+    "temp_f": 82,
     "color_name": "Clay"
   },
   {
@@ -1366,12 +1366,12 @@
   },
   {
     "date": "2025-10-01",
-    "temp_f": 82,
+    "temp_f": 81,
     "color_name": "Clay"
   },
   {
     "date": "2025-10-02",
-    "temp_f": 83,
+    "temp_f": 82,
     "color_name": "Clay"
   },
   {
@@ -1401,7 +1401,7 @@
   },
   {
     "date": "2025-10-08",
-    "temp_f": 69,
+    "temp_f": 68,
     "color_name": "Gold"
   },
   {
@@ -1411,12 +1411,12 @@
   },
   {
     "date": "2025-10-10",
-    "temp_f": 67,
+    "temp_f": 66,
     "color_name": "Gold"
   },
   {
     "date": "2025-10-11",
-    "temp_f": 73,
+    "temp_f": 72,
     "color_name": "Pumpkin"
   },
   {
@@ -1426,7 +1426,7 @@
   },
   {
     "date": "2025-10-13",
-    "temp_f": 74,
+    "temp_f": 73,
     "color_name": "Pumpkin"
   },
   {
@@ -1436,7 +1436,7 @@
   },
   {
     "date": "2025-10-15",
-    "temp_f": 74,
+    "temp_f": 73,
     "color_name": "Pumpkin"
   },
   {
@@ -1461,12 +1461,12 @@
   },
   {
     "date": "2025-10-20",
-    "temp_f": 65,
+    "temp_f": 64,
     "color_name": "Gold"
   },
   {
     "date": "2025-10-21",
-    "temp_f": 66,
+    "temp_f": 65,
     "color_name": "Gold"
   },
   {
@@ -1486,7 +1486,7 @@
   },
   {
     "date": "2025-10-25",
-    "temp_f": 59,
+    "temp_f": 58,
     "color_name": "Butter"
   },
   {
@@ -1516,7 +1516,7 @@
   },
   {
     "date": "2025-10-31",
-    "temp_f": 55,
+    "temp_f": 54,
     "color_name": "Butter"
   },
   {
@@ -1526,7 +1526,7 @@
   },
   {
     "date": "2025-11-02",
-    "temp_f": 51,
+    "temp_f": 50,
     "color_name": "Butter"
   },
   {
@@ -1561,12 +1561,12 @@
   },
   {
     "date": "2025-11-09",
-    "temp_f": 52,
+    "temp_f": 51,
     "color_name": "Butter"
   },
   {
     "date": "2025-11-10",
-    "temp_f": 33,
+    "temp_f": 32,
     "color_name": "Skylight"
   },
   {
@@ -1581,7 +1581,7 @@
   },
   {
     "date": "2025-11-13",
-    "temp_f": 59,
+    "temp_f": 58,
     "color_name": "Butter"
   },
   {
@@ -1591,7 +1591,7 @@
   },
   {
     "date": "2025-11-15",
-    "temp_f": 73,
+    "temp_f": 72,
     "color_name": "Pumpkin"
   },
   {
@@ -1606,7 +1606,7 @@
   },
   {
     "date": "2025-11-18",
-    "temp_f": 56,
+    "temp_f": 55,
     "color_name": "Butter"
   },
   {
@@ -1616,7 +1616,7 @@
   },
   {
     "date": "2025-11-20",
-    "temp_f": 51,
+    "temp_f": 50,
     "color_name": "Butter"
   },
   {
@@ -1636,7 +1636,7 @@
   },
   {
     "date": "2025-11-24",
-    "temp_f": 56,
+    "temp_f": 55,
     "color_name": "Butter"
   },
   {
@@ -1671,7 +1671,7 @@
   },
   {
     "date": "2025-12-01",
-    "temp_f": 37,
+    "temp_f": 36,
     "color_name": "Skylight"
   },
   {
@@ -1681,7 +1681,7 @@
   },
   {
     "date": "2025-12-03",
-    "temp_f": 29,
+    "temp_f": 28,
     "color_name": "Royal Blue"
   },
   {
@@ -1701,7 +1701,7 @@
   },
   {
     "date": "2025-12-07",
-    "temp_f": 45,
+    "temp_f": 44,
     "color_name": "Sage"
   },
   {
@@ -1716,7 +1716,7 @@
   },
   {
     "date": "2025-12-10",
-    "temp_f": 43,
+    "temp_f": 42,
     "color_name": "Sage"
   },
   {
@@ -1731,12 +1731,152 @@
   },
   {
     "date": "2025-12-13",
-    "temp_f": 33,
+    "temp_f": 32,
     "color_name": "Skylight"
   },
   {
     "date": "2025-12-14",
-    "temp_f": 17,
+    "temp_f": 16,
     "color_name": "Gray"
+  },
+  {
+    "date": "2025-12-15",
+    "temp_f": 28,
+    "color_name": "Royal Blue"
+  },
+  {
+    "date": "2025-12-16",
+    "temp_f": 41,
+    "color_name": "Sage"
+  },
+  {
+    "date": "2025-12-17",
+    "temp_f": 53,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2025-12-18",
+    "temp_f": 55,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2025-12-19",
+    "temp_f": 43,
+    "color_name": "Sage"
+  },
+  {
+    "date": "2025-12-20",
+    "temp_f": 53,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2025-12-21",
+    "temp_f": 43,
+    "color_name": "Sage"
+  },
+  {
+    "date": "2025-12-22",
+    "temp_f": 53,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2025-12-23",
+    "temp_f": 65,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2025-12-24",
+    "temp_f": 59,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2025-12-25",
+    "temp_f": 65,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2025-12-26",
+    "temp_f": 64,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2025-12-27",
+    "temp_f": 60,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2025-12-28",
+    "temp_f": 71,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2025-12-29",
+    "temp_f": 48,
+    "color_name": "Sage"
+  },
+  {
+    "date": "2025-12-30",
+    "temp_f": 29,
+    "color_name": "Royal Blue"
+  },
+  {
+    "date": "2025-12-31",
+    "temp_f": 40,
+    "color_name": "Sage"
+  },
+  {
+    "date": "2026-01-01",
+    "temp_f": 38,
+    "color_name": "Skylight"
+  },
+  {
+    "date": "2026-01-02",
+    "temp_f": 37,
+    "color_name": "Skylight"
+  },
+  {
+    "date": "2026-01-03",
+    "temp_f": 36,
+    "color_name": "Skylight"
+  },
+  {
+    "date": "2026-01-04",
+    "temp_f": 40,
+    "color_name": "Sage"
+  },
+  {
+    "date": "2026-01-05",
+    "temp_f": 55,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-01-06",
+    "temp_f": 60,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-01-07",
+    "temp_f": 53,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-01-08",
+    "temp_f": 64,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-01-09",
+    "temp_f": 65,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-01-10",
+    "temp_f": 52,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-01-11",
+    "temp_f": 37,
+    "color_name": "Skylight"
   }
 ]
