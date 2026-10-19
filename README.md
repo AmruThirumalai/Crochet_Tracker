@@ -10,18 +10,19 @@ This app provides a clear, visual, low-friction way to monitor your temperature 
 ## Implemented Features
 
 ### Core Functionality
-- Year View (2025) - All 365 days displayed in a clean, scrollable list
+- Configurable Year View - Choose a year and exact start/end dates for the tracker
 - Daily Tracking - Each day shows date, temperature, and assigned yarn color
 - Completion Tracking - Mark each day's row as "Done" when you finish crocheting
 - Progress Bar - Visual indicator showing completion percentage (X of 365 rows)
 - Month Grouping - Days organized by month with clear headers
 
 ### Weather Data Integration
-- Backend API - Express server with REST endpoint (`/api/weather/2025`)
+- Backend API - Express server with a date-range endpoint (`/api/weather?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD`)
 - Weather Fetch Script - Node.js script to fetch historical temperature data from Open-Meteo API
 - Louisville, KY Location - Coordinates: 38.2673, -85.4709
 - Auto-loading - Weather data persists in localStorage, loads automatically on return visits
 - Manual Refresh - Option to re-fetch weather data if needed
+- Date Range Selection - Retrieve historical weather for a selected year and date range
 
 ### Temperature-to-Color System
 Nine temperature ranges mapped to specific yarn colors:
@@ -65,9 +66,9 @@ Nine temperature ranges mapped to specific yarn colors:
 
 ### Data Persistence
 - localStorage Integration - Saves:
-  - Weather data (`blanket-weather-2025`)
-  - Completion status (`blanket-completion-2025`)
-  - Month divider completion (`blanket-dividers-2025`)
+  - Weather data (`blanket-weather-{year}`)
+  - Completion status (`blanket-completion-{year}`)
+  - Month divider completion (`blanket-dividers-{year}`)
   - Dark mode preference (`blanket-dark-mode`)
   - Month dividers setting (`blanket-month-dividers`)
 - Auto-save - All changes saved immediately

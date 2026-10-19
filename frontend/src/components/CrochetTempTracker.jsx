@@ -3,6 +3,11 @@ import { Check, X, ChevronDown, ChevronUp, Printer, Moon, Sun, Settings } from '
 
 const CrochetTempTracker = () => {
   const [year, setYear] = useState(2025);
+  const [startDate, setStartDate] = useState('2025-01-01');
+  const [endDate, setEndDate] = useState('2025-12-31');
+  const [draftYear, setDraftYear] = useState('2025');
+  const [draftStartDate, setDraftStartDate] = useState('2025-01-01');
+  const [draftEndDate, setDraftEndDate] = useState('2025-12-31');
   const [days, setDays] = useState([]);
   const [selectedDay, setSelectedDay] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -30,6 +35,7 @@ const CrochetTempTracker = () => {
   }, [monthDividers]);
 
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+  const storageKey = (type) => `blanket-${type}-${year}`;
 
   const handlePrint = () => {
     window.print();
@@ -49,25 +55,19 @@ const CrochetTempTracker = () => {
 
   useEffect(() => {
     const initDays = () => {
+      setWeatherLoaded(false);
       const daysInYear = [];
-      for (let month = 0; month < 12; month++) {
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-        for (let day = 1; day <= daysInMonth; day++) {
-          const date = new Date(year, month, day);
-          const dateStr = date.toISOString().split('T')[0];
-          daysInYear.push({
-            date: dateStr,
-            dateObj: date,
-            temp: null,
-            color: null,
-            completed: false
-          });
-        }
+      const date = new Date(`${startDate}T00:00:00`);
+      const lastDate = new Date(`${endDate}T00:00:00`);
+      while (date <= lastDate) {
+        const dateStr = date.toISOString().split('T')[0];
+        daysInYear.push({ date: dateStr, dateObj: new Date(date), temp: null, color: null, completed: false });
+        date.setDate(date.getDate() + 1);
       }
       
       try {
-        const savedWeatherData = localStorage.getItem('blanket-weather-2025');
-        const savedCompletionData = localStorage.getItem('blanket-completion-2025');
+        const savedWeatherData = localStorage.getItem(storageKey('weather'));
+        const savedCompletionData = localStorage.getItem(storageKey('completion'));
         
         let mergedDays = daysInYear;
         
@@ -96,7 +96,7 @@ const CrochetTempTracker = () => {
     };
     
     initDays();
-  }, [year]);
+  }, [year, startDate, endDate]);
 
   useEffect(() => {
     if (days.length > 0) {
@@ -105,19 +105,20 @@ const CrochetTempTracker = () => {
           date: day.date,
           completed: day.completed
         }));
-        localStorage.setItem('blanket-completion-2025', JSON.stringify(completionData));
+        localStorage.setItem(storageKey('completion'), JSON.stringify(completionData));
       } catch (err) {
         console.error('Failed to save completion data:', err);
       }
     }
-  }, [days]);
+  }, [days, year]);
 
   const loadWeatherData = async () => {
     setLoading(true);
     setError(null);
     
     try {
-      const response = await fetch(`${API_URL}/api/weather/2025`);
+      const params = new URLSearchParams({ start_date: startDate, end_date: endDate });
+      const response = await fetch(`${API_URL}/api/weather?${params}`);
       
       if (!response.ok) {
         const errorData = await response.json();
@@ -136,6 +137,7 @@ const CrochetTempTracker = () => {
             temp: weatherEntry.temp_f,
             color: color
           };
+
         }
         return day;
       });
@@ -151,7 +153,7 @@ const CrochetTempTracker = () => {
             temp: d.temp,
             color: d.color
           }));
-        localStorage.setItem('blanket-weather-2025', JSON.stringify(weatherDataToSave));
+        localStorage.setItem(storageKey('weather'), JSON.stringify(weatherDataToSave));
       } catch (saveErr) {
         console.error('Failed to save weather data to localStorage:', saveErr);
       }
@@ -164,11 +166,39 @@ const CrochetTempTracker = () => {
     }
   };
 
+  const applyDateRange = () => {
+    const yearNumber = Number(draftYear);
+    const today = new Date().toISOString().split('T')[0];
+
+    if (!/^\d{4}$/.test(draftYear) || yearNumber < 1900) {
+      setError('Enter a valid four-digit year.');
+      return;
+    }
+    if (!draftStartDate || !draftEndDate || draftStartDate > draftEndDate) {
+      setError('Choose a start date that is on or before the end date.');
+      return;
+    }
+    if (!draftStartDate.startsWith(`${draftYear}-`) || !draftEndDate.startsWith(`${draftYear}-`)) {
+      setError('The start and end dates must belong to the selected year.');
+      return;
+    }
+    if (draftEndDate > today) {
+      setError('The end date cannot be in the future.');
+      return;
+    }
+
+    setError(null);
+    setWeatherLoaded(false);
+    setStartDate(draftStartDate);
+    setEndDate(draftEndDate);
+    setYear(yearNumber);
+  };
+
   const toggleComplete = (dateStr) => {
     const day = displayDays.find(d => d.date === dateStr);
     
     if (day && day.isDivider) {
-      const savedDividers = localStorage.getItem('blanket-dividers-2025');
+      const savedDividers = localStorage.getItem(storageKey('dividers'));
       let dividers = savedDividers ? JSON.parse(savedDividers) : [];
       
       const existingIndex = dividers.findIndex(d => d.id === dateStr);
@@ -178,7 +208,7 @@ const CrochetTempTracker = () => {
         dividers.push({ id: dateStr, completed: true });
       }
       
-      localStorage.setItem('blanket-dividers-2025', JSON.stringify(dividers));
+      localStorage.setItem(storageKey('dividers'), JSON.stringify(dividers));
       
       setDays([...days]);
     } else {
@@ -239,7 +269,7 @@ const CrochetTempTracker = () => {
         
         if (currentMonth !== nextMonth) {
           const dividerId = `${day.date}-divider`;
-          const savedDividers = localStorage.getItem('blanket-dividers-2025');
+          const savedDividers = localStorage.getItem(storageKey('dividers'));
           let dividerCompleted = false;
           
           if (savedDividers) {
@@ -396,7 +426,62 @@ const CrochetTempTracker = () => {
             <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-slate-800'}`}>Settings</h2>
             
             <div className="space-y-3">
-              <button
+                <div className={`rounded-lg p-4 ${darkMode ? 'bg-slate-700' : 'bg-slate-100'}`}>
+                  <h3 className={`font-medium mb-3 ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+                    Tracker dates
+                  </h3>
+                  <div className="space-y-3">
+                    <label className={`block text-sm ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                      Year
+                      <input
+                        type="number"
+                        min="1900"
+                        max={new Date().getFullYear()}
+                        value={draftYear}
+                        onChange={(event) => setDraftYear(event.target.value)}
+                        className={`mt-1 w-full rounded-lg border px-3 py-2 ${
+                          darkMode
+                            ? 'border-slate-500 bg-slate-800 text-white'
+                            : 'border-slate-300 bg-white text-slate-800'
+                        }`}
+                      />
+                    </label>
+                    <label className={`block text-sm ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                      Start date
+                      <input
+                        type="date"
+                        value={draftStartDate}
+                        onChange={(event) => setDraftStartDate(event.target.value)}
+                        className={`mt-1 w-full rounded-lg border px-3 py-2 ${
+                          darkMode
+                            ? 'border-slate-500 bg-slate-800 text-white'
+                            : 'border-slate-300 bg-white text-slate-800'
+                        }`}
+                      />
+                    </label>
+                    <label className={`block text-sm ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                      End date
+                      <input
+                        type="date"
+                        value={draftEndDate}
+                        onChange={(event) => setDraftEndDate(event.target.value)}
+                        className={`mt-1 w-full rounded-lg border px-3 py-2 ${
+                          darkMode
+                            ? 'border-slate-500 bg-slate-800 text-white'
+                            : 'border-slate-300 bg-white text-slate-800'
+                        }`}
+                      />
+                    </label>
+                    <button
+                      onClick={applyDateRange}
+                      className="w-full rounded-lg bg-blue-500 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-600"
+                    >
+                      Apply year and dates
+                    </button>
+                  </div>
+                </div>
+
+                <button
                 onClick={() => setDarkMode(!darkMode)}
                 className={`w-full flex items-center justify-between p-4 rounded-lg transition-colors ${
                   darkMode ? 'bg-slate-700 hover:bg-slate-600' : 'bg-slate-100 hover:bg-slate-200'
