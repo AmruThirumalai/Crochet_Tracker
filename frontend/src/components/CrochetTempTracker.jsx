@@ -467,7 +467,7 @@ const CrochetTempTracker = () => {
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(260px,320px)_minmax(0,1fr)] gap-6 items-start">
-          <aside className="space-y-6 lg:sticky lg:top-4">
+          <aside className="space-y-6 lg:sticky lg:top-4 lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto lg:pr-2">
             <div className={`rounded-2xl shadow-sm p-6 no-print ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
               <h2 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-slate-800'}`}>Progress</h2>
               <div className={`flex justify-between text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>

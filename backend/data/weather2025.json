@@ -36,7 +36,7 @@
   },
   {
     "date": "2025-01-08",
-    "temp_f": 24,
+    "temp_f": 25,
     "color_name": "Royal Blue"
   },
   {
@@ -86,7 +86,7 @@
   },
   {
     "date": "2025-01-18",
-    "temp_f": 42,
+    "temp_f": 43,
     "color_name": "Sage"
   },
   {
@@ -111,7 +111,7 @@
   },
   {
     "date": "2025-01-23",
-    "temp_f": 37,
+    "temp_f": 38,
     "color_name": "Skylight"
   },
   {
@@ -171,7 +171,7 @@
   },
   {
     "date": "2025-02-04",
-    "temp_f": 57,
+    "temp_f": 59,
     "color_name": "Butter"
   },
   {
@@ -216,7 +216,7 @@
   },
   {
     "date": "2025-02-13",
-    "temp_f": 40,
+    "temp_f": 47,
     "color_name": "Sage"
   },
   {
@@ -231,7 +231,7 @@
   },
   {
     "date": "2025-02-16",
-    "temp_f": 44,
+    "temp_f": 45,
     "color_name": "Sage"
   },
   {
@@ -296,7 +296,7 @@
   },
   {
     "date": "2025-03-01",
-    "temp_f": 55,
+    "temp_f": 57,
     "color_name": "Butter"
   },
   {
@@ -316,8 +316,8 @@
   },
   {
     "date": "2025-03-05",
-    "temp_f": 58,
-    "color_name": "Butter"
+    "temp_f": 60,
+    "color_name": "Gold"
   },
   {
     "date": "2025-03-06",
@@ -366,7 +366,7 @@
   },
   {
     "date": "2025-03-15",
-    "temp_f": 68,
+    "temp_f": 69,
     "color_name": "Gold"
   },
   {
@@ -381,7 +381,7 @@
   },
   {
     "date": "2025-03-18",
-    "temp_f": 70,
+    "temp_f": 71,
     "color_name": "Pumpkin"
   },
   {
@@ -451,7 +451,7 @@
   },
   {
     "date": "2025-04-01",
-    "temp_f": 54,
+    "temp_f": 55,
     "color_name": "Butter"
   },
   {
@@ -461,7 +461,7 @@
   },
   {
     "date": "2025-04-03",
-    "temp_f": 68,
+    "temp_f": 69,
     "color_name": "Gold"
   },
   {
@@ -471,13 +471,13 @@
   },
   {
     "date": "2025-04-05",
-    "temp_f": 69,
-    "color_name": "Gold"
+    "temp_f": 70,
+    "color_name": "Pumpkin"
   },
   {
     "date": "2025-04-06",
-    "temp_f": 49,
-    "color_name": "Sage"
+    "temp_f": 50,
+    "color_name": "Butter"
   },
   {
     "date": "2025-04-07",
@@ -521,7 +521,7 @@
   },
   {
     "date": "2025-04-15",
-    "temp_f": 55,
+    "temp_f": 57,
     "color_name": "Butter"
   },
   {
@@ -581,7 +581,7 @@
   },
   {
     "date": "2025-04-27",
-    "temp_f": 63,
+    "temp_f": 64,
     "color_name": "Gold"
   },
   {
@@ -601,7 +601,7 @@
   },
   {
     "date": "2025-05-01",
-    "temp_f": 72,
+    "temp_f": 73,
     "color_name": "Pumpkin"
   },
   {
@@ -616,7 +616,7 @@
   },
   {
     "date": "2025-05-04",
-    "temp_f": 53,
+    "temp_f": 54,
     "color_name": "Butter"
   },
   {
@@ -631,8 +631,8 @@
   },
   {
     "date": "2025-05-07",
-    "temp_f": 69,
-    "color_name": "Gold"
+    "temp_f": 70,
+    "color_name": "Pumpkin"
   },
   {
     "date": "2025-05-08",
@@ -901,7 +901,7 @@
   },
   {
     "date": "2025-06-30",
-    "temp_f": 83,
+    "temp_f": 84,
     "color_name": "Clay"
   },
   {
@@ -1001,7 +1001,7 @@
   },
   {
     "date": "2025-07-20",
-    "temp_f": 86,
+    "temp_f": 87,
     "color_name": "Clay"
   },
   {
@@ -1056,7 +1056,7 @@
   },
   {
     "date": "2025-07-31",
-    "temp_f": 86,
+    "temp_f": 87,
     "color_name": "Clay"
   },
   {
@@ -1216,12 +1216,12 @@
   },
   {
     "date": "2025-09-01",
-    "temp_f": 82,
+    "temp_f": 83,
     "color_name": "Clay"
   },
   {
     "date": "2025-09-02",
-    "temp_f": 83,
+    "temp_f": 84,
     "color_name": "Clay"
   },
   {
@@ -1461,7 +1461,7 @@
   },
   {
     "date": "2025-10-20",
-    "temp_f": 64,
+    "temp_f": 65,
     "color_name": "Gold"
   },
   {
@@ -1506,7 +1506,7 @@
   },
   {
     "date": "2025-10-29",
-    "temp_f": 51,
+    "temp_f": 52,
     "color_name": "Butter"
   },
   {
@@ -1561,12 +1561,12 @@
   },
   {
     "date": "2025-11-09",
-    "temp_f": 51,
+    "temp_f": 52,
     "color_name": "Butter"
   },
   {
     "date": "2025-11-10",
-    "temp_f": 32,
+    "temp_f": 33,
     "color_name": "Skylight"
   },
   {
@@ -1596,7 +1596,7 @@
   },
   {
     "date": "2025-11-16",
-    "temp_f": 61,
+    "temp_f": 62,
     "color_name": "Gold"
   },
   {
@@ -1706,7 +1706,7 @@
   },
   {
     "date": "2025-12-08",
-    "temp_f": 34,
+    "temp_f": 35,
     "color_name": "Skylight"
   },
   {
@@ -1716,7 +1716,7 @@
   },
   {
     "date": "2025-12-10",
-    "temp_f": 42,
+    "temp_f": 43,
     "color_name": "Sage"
   },
   {
@@ -1736,7 +1736,7 @@
   },
   {
     "date": "2025-12-14",
-    "temp_f": 16,
+    "temp_f": 18,
     "color_name": "Gray"
   },
   {
@@ -1761,7 +1761,7 @@
   },
   {
     "date": "2025-12-19",
-    "temp_f": 43,
+    "temp_f": 44,
     "color_name": "Sage"
   },
   {
@@ -1806,13 +1806,13 @@
   },
   {
     "date": "2025-12-28",
-    "temp_f": 71,
+    "temp_f": 72,
     "color_name": "Pumpkin"
   },
   {
     "date": "2025-12-29",
-    "temp_f": 48,
-    "color_name": "Sage"
+    "temp_f": 54,
+    "color_name": "Butter"
   },
   {
     "date": "2025-12-30",
@@ -1876,7 +1876,1412 @@
   },
   {
     "date": "2026-01-11",
+    "temp_f": 36,
+    "color_name": "Skylight"
+  },
+  {
+    "date": "2026-01-12",
+    "temp_f": 43,
+    "color_name": "Sage"
+  },
+  {
+    "date": "2026-01-13",
+    "temp_f": 55,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-01-14",
+    "temp_f": 52,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-01-15",
+    "temp_f": 26,
+    "color_name": "Royal Blue"
+  },
+  {
+    "date": "2026-01-16",
+    "temp_f": 43,
+    "color_name": "Sage"
+  },
+  {
+    "date": "2026-01-17",
+    "temp_f": 36,
+    "color_name": "Skylight"
+  },
+  {
+    "date": "2026-01-18",
+    "temp_f": 26,
+    "color_name": "Royal Blue"
+  },
+  {
+    "date": "2026-01-19",
+    "temp_f": 27,
+    "color_name": "Royal Blue"
+  },
+  {
+    "date": "2026-01-20",
+    "temp_f": 27,
+    "color_name": "Royal Blue"
+  },
+  {
+    "date": "2026-01-21",
+    "temp_f": 39,
+    "color_name": "Skylight"
+  },
+  {
+    "date": "2026-01-22",
+    "temp_f": 38,
+    "color_name": "Skylight"
+  },
+  {
+    "date": "2026-01-23",
+    "temp_f": 27,
+    "color_name": "Royal Blue"
+  },
+  {
+    "date": "2026-01-24",
+    "temp_f": 15,
+    "color_name": "Gray"
+  },
+  {
+    "date": "2026-01-25",
+    "temp_f": 19,
+    "color_name": "Gray"
+  },
+  {
+    "date": "2026-01-26",
+    "temp_f": 12,
+    "color_name": "Gray"
+  },
+  {
+    "date": "2026-01-27",
+    "temp_f": 24,
+    "color_name": "Royal Blue"
+  },
+  {
+    "date": "2026-01-28",
+    "temp_f": 19,
+    "color_name": "Gray"
+  },
+  {
+    "date": "2026-01-29",
+    "temp_f": 24,
+    "color_name": "Royal Blue"
+  },
+  {
+    "date": "2026-01-30",
+    "temp_f": 21,
+    "color_name": "Royal Blue"
+  },
+  {
+    "date": "2026-01-31",
+    "temp_f": 16,
+    "color_name": "Gray"
+  },
+  {
+    "date": "2026-02-01",
+    "temp_f": 20,
+    "color_name": "Royal Blue"
+  },
+  {
+    "date": "2026-02-02",
+    "temp_f": 33,
+    "color_name": "Skylight"
+  },
+  {
+    "date": "2026-02-03",
     "temp_f": 37,
     "color_name": "Skylight"
+  },
+  {
+    "date": "2026-02-04",
+    "temp_f": 31,
+    "color_name": "Skylight"
+  },
+  {
+    "date": "2026-02-05",
+    "temp_f": 22,
+    "color_name": "Royal Blue"
+  },
+  {
+    "date": "2026-02-06",
+    "temp_f": 37,
+    "color_name": "Skylight"
+  },
+  {
+    "date": "2026-02-07",
+    "temp_f": 34,
+    "color_name": "Skylight"
+  },
+  {
+    "date": "2026-02-08",
+    "temp_f": 26,
+    "color_name": "Royal Blue"
+  },
+  {
+    "date": "2026-02-09",
+    "temp_f": 41,
+    "color_name": "Sage"
+  },
+  {
+    "date": "2026-02-10",
+    "temp_f": 66,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-02-11",
+    "temp_f": 46,
+    "color_name": "Sage"
+  },
+  {
+    "date": "2026-02-12",
+    "temp_f": 45,
+    "color_name": "Sage"
+  },
+  {
+    "date": "2026-02-13",
+    "temp_f": 51,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-02-14",
+    "temp_f": 54,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-02-15",
+    "temp_f": 48,
+    "color_name": "Sage"
+  },
+  {
+    "date": "2026-02-16",
+    "temp_f": 55,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-02-17",
+    "temp_f": 62,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-02-18",
+    "temp_f": 66,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-02-19",
+    "temp_f": 69,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-02-20",
+    "temp_f": 64,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-02-21",
+    "temp_f": 46,
+    "color_name": "Sage"
+  },
+  {
+    "date": "2026-02-22",
+    "temp_f": 30,
+    "color_name": "Skylight"
+  },
+  {
+    "date": "2026-02-23",
+    "temp_f": 30,
+    "color_name": "Skylight"
+  },
+  {
+    "date": "2026-02-24",
+    "temp_f": 42,
+    "color_name": "Sage"
+  },
+  {
+    "date": "2026-02-25",
+    "temp_f": 55,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-02-26",
+    "temp_f": 51,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-02-27",
+    "temp_f": 61,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-02-28",
+    "temp_f": 65,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-03-01",
+    "temp_f": 53,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-03-02",
+    "temp_f": 39,
+    "color_name": "Skylight"
+  },
+  {
+    "date": "2026-03-03",
+    "temp_f": 65,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-03-04",
+    "temp_f": 65,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-03-05",
+    "temp_f": 65,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-03-06",
+    "temp_f": 78,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-03-07",
+    "temp_f": 68,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-03-08",
+    "temp_f": 60,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-03-09",
+    "temp_f": 70,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-03-10",
+    "temp_f": 76,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-03-11",
+    "temp_f": 73,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-03-12",
+    "temp_f": 50,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-03-13",
+    "temp_f": 58,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-03-14",
+    "temp_f": 59,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-03-15",
+    "temp_f": 73,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-03-16",
+    "temp_f": 60,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-03-17",
+    "temp_f": 29,
+    "color_name": "Royal Blue"
+  },
+  {
+    "date": "2026-03-18",
+    "temp_f": 51,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-03-19",
+    "temp_f": 69,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-03-20",
+    "temp_f": 75,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-03-21",
+    "temp_f": 76,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-03-22",
+    "temp_f": 85,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-03-23",
+    "temp_f": 60,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-03-24",
+    "temp_f": 56,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-03-25",
+    "temp_f": 72,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-03-26",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-03-27",
+    "temp_f": 73,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-03-28",
+    "temp_f": 50,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-03-29",
+    "temp_f": 68,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-03-30",
+    "temp_f": 75,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-03-31",
+    "temp_f": 82,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-04-01",
+    "temp_f": 82,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-04-02",
+    "temp_f": 80,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-04-03",
+    "temp_f": 80,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-04-04",
+    "temp_f": 80,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-04-05",
+    "temp_f": 56,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-04-06",
+    "temp_f": 63,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-04-07",
+    "temp_f": 54,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-04-08",
+    "temp_f": 69,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-04-09",
+    "temp_f": 77,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-04-10",
+    "temp_f": 77,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-04-11",
+    "temp_f": 72,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-04-12",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-04-13",
+    "temp_f": 80,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-04-14",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-04-15",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-04-16",
+    "temp_f": 79,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-04-17",
+    "temp_f": 83,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-04-18",
+    "temp_f": 71,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-04-19",
+    "temp_f": 60,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-04-20",
+    "temp_f": 61,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-04-21",
+    "temp_f": 77,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-04-22",
+    "temp_f": 80,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-04-23",
+    "temp_f": 82,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-04-24",
+    "temp_f": 80,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-04-25",
+    "temp_f": 76,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-04-26",
+    "temp_f": 75,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-04-27",
+    "temp_f": 78,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-04-28",
+    "temp_f": 77,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-04-29",
+    "temp_f": 66,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-04-30",
+    "temp_f": 61,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-05-01",
+    "temp_f": 60,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-05-02",
+    "temp_f": 55,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-05-03",
+    "temp_f": 63,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-05-04",
+    "temp_f": 79,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-05-05",
+    "temp_f": 71,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-05-06",
+    "temp_f": 61,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-05-07",
+    "temp_f": 61,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-05-08",
+    "temp_f": 71,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-05-09",
+    "temp_f": 76,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-05-10",
+    "temp_f": 77,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-05-11",
+    "temp_f": 75,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-05-12",
+    "temp_f": 79,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-05-13",
+    "temp_f": 75,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-05-14",
+    "temp_f": 67,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-05-15",
+    "temp_f": 76,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-05-16",
+    "temp_f": 82,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-05-17",
+    "temp_f": 90,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-05-18",
+    "temp_f": 90,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-05-19",
+    "temp_f": 89,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-05-20",
+    "temp_f": 74,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-05-21",
+    "temp_f": 65,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-05-22",
+    "temp_f": 69,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-05-23",
+    "temp_f": 74,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-05-24",
+    "temp_f": 71,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-05-25",
+    "temp_f": 76,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-05-26",
+    "temp_f": 75,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-05-27",
+    "temp_f": 81,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-05-28",
+    "temp_f": 82,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-05-29",
+    "temp_f": 80,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-05-30",
+    "temp_f": 80,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-05-31",
+    "temp_f": 78,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-06-01",
+    "temp_f": 79,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-06-02",
+    "temp_f": 77,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-06-03",
+    "temp_f": 81,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-04",
+    "temp_f": 86,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-05",
+    "temp_f": 85,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-06",
+    "temp_f": 88,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-07",
+    "temp_f": 89,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-08",
+    "temp_f": 79,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-06-09",
+    "temp_f": 81,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-10",
+    "temp_f": 87,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-11",
+    "temp_f": 87,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-12",
+    "temp_f": 81,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-13",
+    "temp_f": 82,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-14",
+    "temp_f": 78,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-06-15",
+    "temp_f": 73,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-06-16",
+    "temp_f": 77,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-06-17",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-18",
+    "temp_f": 81,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-19",
+    "temp_f": 81,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-20",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-21",
+    "temp_f": 85,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-22",
+    "temp_f": 79,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-06-23",
+    "temp_f": 79,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-06-24",
+    "temp_f": 81,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-25",
+    "temp_f": 86,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-26",
+    "temp_f": 79,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-06-27",
+    "temp_f": 80,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-28",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-06-29",
+    "temp_f": 90,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-06-30",
+    "temp_f": 91,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-07-01",
+    "temp_f": 92,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-07-02",
+    "temp_f": 91,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-07-03",
+    "temp_f": 92,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-07-04",
+    "temp_f": 90,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-07-05",
+    "temp_f": 87,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-06",
+    "temp_f": 85,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-07",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-08",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-09",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-10",
+    "temp_f": 83,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-11",
+    "temp_f": 81,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-12",
+    "temp_f": 80,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-13",
+    "temp_f": 85,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-14",
+    "temp_f": 87,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-15",
+    "temp_f": 88,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-16",
+    "temp_f": 89,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-17",
+    "temp_f": 88,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-18",
+    "temp_f": 89,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-19",
+    "temp_f": 88,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-20",
+    "temp_f": 88,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-21",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-22",
+    "temp_f": 77,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-07-23",
+    "temp_f": 77,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-07-24",
+    "temp_f": 81,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-25",
+    "temp_f": 77,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-07-26",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-27",
+    "temp_f": 88,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-28",
+    "temp_f": 87,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-29",
+    "temp_f": 82,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-30",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-07-31",
+    "temp_f": 86,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-01",
+    "temp_f": 82,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-02",
+    "temp_f": 77,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-08-03",
+    "temp_f": 81,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-04",
+    "temp_f": 85,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-05",
+    "temp_f": 87,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-06",
+    "temp_f": 88,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-07",
+    "temp_f": 87,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-08",
+    "temp_f": 87,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-09",
+    "temp_f": 91,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-08-10",
+    "temp_f": 88,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-11",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-12",
+    "temp_f": 81,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-13",
+    "temp_f": 87,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-14",
+    "temp_f": 89,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-15",
+    "temp_f": 93,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-08-16",
+    "temp_f": 91,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-08-17",
+    "temp_f": 85,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-18",
+    "temp_f": 83,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-19",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-20",
+    "temp_f": 82,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-21",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-22",
+    "temp_f": 86,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-23",
+    "temp_f": 81,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-24",
+    "temp_f": 81,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-25",
+    "temp_f": 82,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-26",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-27",
+    "temp_f": 86,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-28",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-29",
+    "temp_f": 87,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-08-30",
+    "temp_f": 90,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-08-31",
+    "temp_f": 91,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-09-01",
+    "temp_f": 95,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-09-02",
+    "temp_f": 95,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-09-03",
+    "temp_f": 97,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-09-04",
+    "temp_f": 98,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-09-05",
+    "temp_f": 93,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-09-06",
+    "temp_f": 85,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-09-07",
+    "temp_f": 86,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-09-08",
+    "temp_f": 88,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-09-09",
+    "temp_f": 93,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-09-10",
+    "temp_f": 82,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-09-11",
+    "temp_f": 80,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-09-12",
+    "temp_f": 84,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-09-13",
+    "temp_f": 90,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-09-14",
+    "temp_f": 82,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-09-15",
+    "temp_f": 94,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-09-16",
+    "temp_f": 94,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-09-17",
+    "temp_f": 96,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-09-18",
+    "temp_f": 88,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-09-19",
+    "temp_f": 92,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-09-20",
+    "temp_f": 92,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-09-21",
+    "temp_f": 85,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-09-22",
+    "temp_f": 67,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-09-23",
+    "temp_f": 68,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-09-24",
+    "temp_f": 69,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-09-25",
+    "temp_f": 73,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-09-26",
+    "temp_f": 76,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-09-27",
+    "temp_f": 76,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-09-28",
+    "temp_f": 78,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-09-29",
+    "temp_f": 81,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-09-30",
+    "temp_f": 85,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-10-01",
+    "temp_f": 90,
+    "color_name": "Red"
+  },
+  {
+    "date": "2026-10-02",
+    "temp_f": 78,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-10-03",
+    "temp_f": 73,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-10-04",
+    "temp_f": 75,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-10-05",
+    "temp_f": 72,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-10-06",
+    "temp_f": 72,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-10-07",
+    "temp_f": 80,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-10-08",
+    "temp_f": 80,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-10-09",
+    "temp_f": 83,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-10-10",
+    "temp_f": 67,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-10-11",
+    "temp_f": 67,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-10-12",
+    "temp_f": 83,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-10-13",
+    "temp_f": 86,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-10-14",
+    "temp_f": 86,
+    "color_name": "Clay"
+  },
+  {
+    "date": "2026-10-15",
+    "temp_f": 79,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-10-16",
+    "temp_f": 75,
+    "color_name": "Pumpkin"
+  },
+  {
+    "date": "2026-10-17",
+    "temp_f": 56,
+    "color_name": "Butter"
+  },
+  {
+    "date": "2026-10-18",
+    "temp_f": 63,
+    "color_name": "Gold"
+  },
+  {
+    "date": "2026-10-19",
+    "temp_f": 66,
+    "color_name": "Gold"
   }
 ]
