@@ -9,6 +9,7 @@ const CrochetTempTracker = () => {
   const [error, setError] = useState(null);
   const [weatherLoaded, setWeatherLoaded] = useState(false);
   const [showColorLegend, setShowColorLegend] = useState(true);
+  const [showColorTotals, setShowColorTotals] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [filter, setFilter] = useState('all');
   const [darkMode, setDarkMode] = useState(() => {
@@ -283,6 +284,32 @@ const CrochetTempTracker = () => {
     { name: 'Red', hex: '#DC2626', range: '90°F+' }
   ];
 
+  const monthlyColorTotals = Array.from({ length: 12 }, (_, monthIndex) => {
+    const counts = Object.fromEntries(colorLegendItems.map(item => [item.name, 0]));
+
+    days.forEach(day => {
+      const date = new Date(day.date + 'T00:00:00');
+      if (date.getMonth() === monthIndex && day.color?.name in counts) {
+        counts[day.color.name] += 1;
+      }
+    });
+
+    return {
+      month: new Date(year, monthIndex, 1).toLocaleDateString('en-US', { month: 'short' }),
+      counts,
+      total: Object.values(counts).reduce((sum, count) => sum + count, 0)
+    };
+  });
+
+  const overallColorTotals = colorLegendItems.reduce((totals, item) => {
+    totals[item.name] = monthlyColorTotals.reduce(
+      (sum, month) => sum + month.counts[item.name],
+      0
+    );
+    return totals;
+  }, {});
+  const overallColorTotal = Object.values(overallColorTotals).reduce((sum, count) => sum + count, 0);
+
   return (
     <div className={`min-h-screen p-4 transition-colors ${darkMode ? 'bg-gradient-to-br from-slate-900 to-slate-800' : 'bg-gradient-to-br from-slate-50 to-blue-50'}`}>
       <style>{`
@@ -300,7 +327,7 @@ const CrochetTempTracker = () => {
         }
       `}</style>
       
-      <div className="max-w-2xl mx-auto print-container">
+      <div className="max-w-7xl mx-auto print-container">
         <div className={`rounded-2xl shadow-sm p-6 mb-6 ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
           <div className="flex items-center justify-between mb-2">
             <h1 className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-slate-800'}`}>
@@ -317,20 +344,6 @@ const CrochetTempTracker = () => {
           <p className={darkMode ? 'text-slate-300 mb-4' : 'text-slate-600 mb-4'}>
             Track your daily crochet progress for {year}
           </p>
-          
-          <div className="mb-4">
-            <div className={`flex justify-between text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
-              <span>{completedCount} of {days.length} rows completed</span>
-              <span>{progressPercent}%</span>
-            </div>
-            <div className={`w-full h-3 rounded-full overflow-hidden ${darkMode ? 'bg-slate-700' : 'bg-slate-200'}`}>
-              <div 
-                className="h-full bg-gradient-to-r from-blue-400 to-blue-500 transition-all duration-500"
-                style={{ width: `${progressPercent}%` }}
-              />
-            </div>
-          </div>
-
           <div className="no-print">
             {!weatherLoaded && (
               <button
@@ -453,7 +466,23 @@ const CrochetTempTracker = () => {
           </div>
         )}
 
-        <div className={`rounded-2xl shadow-sm p-6 mb-6 no-print ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(260px,320px)_minmax(0,1fr)] gap-6 items-start">
+          <aside className="space-y-6 lg:sticky lg:top-4">
+            <div className={`rounded-2xl shadow-sm p-6 no-print ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
+              <h2 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-slate-800'}`}>Progress</h2>
+              <div className={`flex justify-between text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                <span>{completedCount} of {days.length} rows</span>
+                <span>{progressPercent}%</span>
+              </div>
+              <div className={`w-full h-3 rounded-full overflow-hidden ${darkMode ? 'bg-slate-700' : 'bg-slate-200'}`}>
+                <div
+                  className="h-full bg-gradient-to-r from-blue-400 to-blue-500 transition-all duration-500"
+                  style={{ width: `${progressPercent}%` }}
+                />
+              </div>
+            </div>
+
+            <div className={`rounded-2xl shadow-sm p-6 no-print ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
           <h2 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-slate-800'}`}>Filter Days</h2>
           <div className="flex gap-2">
             <button
@@ -495,7 +524,7 @@ const CrochetTempTracker = () => {
           </div>
         </div>
 
-        <div className={`rounded-2xl shadow-sm mb-6 ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
+        <div className={`rounded-2xl shadow-sm no-print ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
           <button
             onClick={() => setShowColorLegend(!showColorLegend)}
             className={`w-full flex items-center justify-between p-6 text-left transition-colors rounded-2xl ${
@@ -527,7 +556,112 @@ const CrochetTempTracker = () => {
           )}
         </div>
 
-        <div className="space-y-2 pb-8">
+        <div className={`rounded-2xl shadow-sm no-print ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
+          <button
+            onClick={() => setShowColorTotals(!showColorTotals)}
+            className={`w-full flex items-center justify-between p-6 text-left transition-colors rounded-2xl ${
+              darkMode ? 'hover:bg-slate-700' : 'hover:bg-slate-50'
+            }`}
+          >
+            <div>
+              <h2 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+                Monthly Color Totals
+              </h2>
+              <p className={`text-sm mt-1 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                {overallColorTotal} total color-assigned rows
+              </p>
+            </div>
+            {showColorTotals ? (
+              <ChevronUp className={`w-5 h-5 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`} />
+            ) : (
+              <ChevronDown className={`w-5 h-5 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`} />
+            )}
+          </button>
+
+          {showColorTotals && <div className="p-6 pt-0">
+            <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <div>
+                <h2 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+                  Monthly Color Totals
+                </h2>
+                <p className={`text-sm mt-1 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                  Number of rows assigned to each yarn color
+                </p>
+              </div>
+              <div className={`rounded-lg px-3 py-2 text-right ${darkMode ? 'bg-slate-700' : 'bg-blue-50'}`}>
+                <div className={`text-xs uppercase tracking-wide ${darkMode ? 'text-slate-400' : 'text-blue-700'}`}>
+                  Overall total
+                </div>
+                <div className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-blue-800'}`}>
+                  {overallColorTotal}
+                </div>
+              </div>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[760px] text-sm">
+                <thead>
+                  <tr className={`border-b ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>
+                    <th className={`px-3 py-3 text-left font-semibold ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+                      Month
+                    </th>
+                    {colorLegendItems.map(item => (
+                      <th key={item.name} className={`px-2 py-3 text-center font-medium ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                        <span className="inline-flex flex-col items-center gap-1">
+                          <span
+                            className="w-4 h-4 rounded-full border border-slate-300"
+                            style={{ backgroundColor: item.hex }}
+                            title={item.name}
+                          />
+                          <span>{item.name}</span>
+                        </span>
+                      </th>
+                    ))}
+                    <th className={`px-3 py-3 text-right font-semibold ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+                      Total
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {monthlyColorTotals.map(month => (
+                    <tr key={month.month} className={`border-b ${darkMode ? 'border-slate-700' : 'border-slate-100'}`}>
+                      <th className={`px-3 py-3 text-left font-medium ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>
+                        {month.month}
+                      </th>
+                      {colorLegendItems.map(item => (
+                        <td key={item.name} className={`px-2 py-3 text-center ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+                          {month.counts[item.name]}
+                        </td>
+                      ))}
+                      <td className={`px-3 py-3 text-right font-semibold ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>
+                        {month.total}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+                <tfoot>
+                  <tr className={darkMode ? 'bg-slate-700/60' : 'bg-slate-50'}>
+                    <th className={`px-3 py-3 text-left font-bold ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+                      Overall
+                    </th>
+                    {colorLegendItems.map(item => (
+                      <td key={item.name} className={`px-2 py-3 text-center font-bold ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+                        {overallColorTotals[item.name]}
+                      </td>
+                    ))}
+                    <td className={`px-3 py-3 text-right font-bold ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+                      {overallColorTotal}
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>}
+        </div>
+
+          </aside>
+
+          <section className="space-y-2 pb-8 min-w-0">
           {filteredDays.map((day) => {
             const originalIndex = days.findIndex(d => d.date === day.date);
             const isMonthDivider = day.isDivider;
@@ -599,7 +733,8 @@ const CrochetTempTracker = () => {
               </React.Fragment>
             );
           })}
-        </div>
+          </section>
+      </div>
       </div>
 
       {selectedDay && (
