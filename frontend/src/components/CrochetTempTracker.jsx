@@ -374,51 +374,6 @@ const CrochetTempTracker = () => {
           <p className={darkMode ? 'text-slate-300 mb-4' : 'text-slate-600 mb-4'}>
             Track your daily crochet progress for {year}
           </p>
-          <div className="no-print">
-            {!weatherLoaded && (
-              <button
-                onClick={loadWeatherData}
-                disabled={loading}
-                className={`w-full font-medium py-3 px-4 rounded-lg transition-colors ${
-                  darkMode 
-                    ? 'bg-blue-600 hover:bg-blue-700 disabled:bg-slate-700 text-white'
-                    : 'bg-blue-500 hover:bg-blue-600 disabled:bg-slate-300 text-white'
-                }`}
-              >
-                {loading ? 'Loading Weather Data...' : 'Load Weather Data'}
-              </button>
-            )}
-          
-            {weatherLoaded && (
-              <div className={`flex items-center justify-between p-3 rounded-lg border ${
-                darkMode 
-                  ? 'bg-green-900/30 border-green-700'
-                  : 'bg-green-50 border-green-200'
-              }`}>
-                <div className="flex items-center gap-2">
-                  <Check className={`w-5 h-5 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
-                  <span className={`font-medium ${darkMode ? 'text-green-300' : 'text-green-700'}`}>Weather data loaded</span>
-                </div>
-                <button
-                  onClick={loadWeatherData}
-                  disabled={loading}
-                  className={`text-sm underline ${darkMode ? 'text-green-300 hover:text-green-200' : 'text-green-700 hover:text-green-800'}`}
-                >
-                  Refresh
-                </button>
-              </div>
-            )}
-          
-            {error && (
-              <div className={`mt-4 p-3 rounded-lg border text-sm ${
-                darkMode
-                  ? 'bg-red-900/30 border-red-700 text-red-300'
-                  : 'bg-red-50 border-red-200 text-red-700'
-              }`}>
-                {error}
-              </div>
-            )}
-          </div>
         </div>
 
         {showSettings && (
@@ -438,7 +393,14 @@ const CrochetTempTracker = () => {
                         min="1900"
                         max={new Date().getFullYear()}
                         value={draftYear}
-                        onChange={(event) => setDraftYear(event.target.value)}
+                        onChange={(event) => {
+                          const nextYear = event.target.value;
+                          setDraftYear(nextYear);
+                          if (/^\d{4}$/.test(nextYear)) {
+                            setDraftStartDate(`${nextYear}-01-01`);
+                            setDraftEndDate(`${nextYear}-12-31`);
+                          }
+                        }}
                         className={`mt-1 w-full rounded-lg border px-3 py-2 ${
                           darkMode
                             ? 'border-slate-500 bg-slate-800 text-white'
@@ -479,6 +441,69 @@ const CrochetTempTracker = () => {
                       Apply year and dates
                     </button>
                   </div>
+                </div>
+
+                <div className={`rounded-lg p-4 ${darkMode ? 'bg-slate-700' : 'bg-slate-100'}`}>
+                  <h3 className={`font-medium mb-3 ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+                    Progress for {year}
+                  </h3>
+                  <div className={`flex justify-between text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                    <span>{completedCount} of {days.length} rows</span>
+                    <span>{progressPercent}%</span>
+                  </div>
+                  <div className={`w-full h-3 rounded-full overflow-hidden ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
+                    <div
+                      className="h-full bg-gradient-to-r from-blue-400 to-blue-500 transition-all duration-500"
+                      style={{ width: `${progressPercent}%` }}
+                    />
+                  </div>
+                </div>
+
+                <div className={`rounded-lg p-4 ${darkMode ? 'bg-slate-700' : 'bg-slate-100'}`}>
+                  <h3 className={`font-medium mb-3 ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+                    Weather data
+                  </h3>
+                  {!weatherLoaded && (
+                    <button
+                      onClick={loadWeatherData}
+                      disabled={loading}
+                      className={`w-full font-medium py-3 px-4 rounded-lg transition-colors ${
+                        darkMode
+                          ? 'bg-blue-600 hover:bg-blue-700 disabled:bg-slate-600 text-white'
+                          : 'bg-blue-500 hover:bg-blue-600 disabled:bg-slate-300 text-white'
+                      }`}
+                    >
+                      {loading ? 'Loading Weather Data...' : 'Load Weather Data'}
+                    </button>
+                  )}
+                  {weatherLoaded && (
+                    <div className={`flex items-center justify-between p-3 rounded-lg border ${
+                      darkMode
+                        ? 'bg-green-900/30 border-green-700'
+                        : 'bg-green-50 border-green-200'
+                    }`}>
+                      <div className="flex items-center gap-2">
+                        <Check className={`w-5 h-5 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
+                        <span className={`font-medium ${darkMode ? 'text-green-300' : 'text-green-700'}`}>Data loaded</span>
+                      </div>
+                      <button
+                        onClick={loadWeatherData}
+                        disabled={loading}
+                        className={`text-sm underline ${darkMode ? 'text-green-300 hover:text-green-200' : 'text-green-700 hover:text-green-800'}`}
+                      >
+                        {loading ? 'Refreshing...' : 'Refresh'}
+                      </button>
+                    </div>
+                  )}
+                  {error && (
+                    <div className={`mt-3 p-3 rounded-lg border text-sm ${
+                      darkMode
+                        ? 'bg-red-900/30 border-red-700 text-red-300'
+                        : 'bg-red-50 border-red-200 text-red-700'
+                    }`}>
+                      {error}
+                    </div>
+                  )}
                 </div>
 
                 <button
@@ -551,22 +576,8 @@ const CrochetTempTracker = () => {
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(260px,320px)_minmax(0,1fr)] gap-6 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(360px,400px)_minmax(0,1fr)] gap-6 items-start">
           <aside className="space-y-6 lg:sticky lg:top-4 lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto lg:pr-2">
-            <div className={`rounded-2xl shadow-sm p-6 no-print ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
-              <h2 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-slate-800'}`}>Progress</h2>
-              <div className={`flex justify-between text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
-                <span>{completedCount} of {days.length} rows</span>
-                <span>{progressPercent}%</span>
-              </div>
-              <div className={`w-full h-3 rounded-full overflow-hidden ${darkMode ? 'bg-slate-700' : 'bg-slate-200'}`}>
-                <div
-                  className="h-full bg-gradient-to-r from-blue-400 to-blue-500 transition-all duration-500"
-                  style={{ width: `${progressPercent}%` }}
-                />
-              </div>
-            </div>
-
             <div className={`rounded-2xl shadow-sm p-6 no-print ${darkMode ? 'bg-slate-800' : 'bg-white'}`}>
           <h2 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-slate-800'}`}>Filter Days</h2>
           <div className="flex gap-2">
