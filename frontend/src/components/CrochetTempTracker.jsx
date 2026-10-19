@@ -17,6 +17,7 @@ const CrochetTempTracker = () => {
   const [showColorTotals, setShowColorTotals] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [filter, setFilter] = useState('all');
+  const [collapsedMonths, setCollapsedMonths] = useState({});
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem('blanket-dark-mode');
     return saved ? JSON.parse(saved) : false;
@@ -36,6 +37,10 @@ const CrochetTempTracker = () => {
 
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
   const storageKey = (type) => `blanket-${type}-${year}`;
+
+  useEffect(() => {
+    setCollapsedMonths({});
+  }, [year]);
 
   const handlePrint = () => {
     window.print();
@@ -245,6 +250,15 @@ const CrochetTempTracker = () => {
     return date.toLocaleDateString('en-US', { month: 'long' });
   };
 
+  const getMonthKey = (dateStr) => dateStr.slice(0, 7);
+
+  const toggleMonth = (monthKey) => {
+    setCollapsedMonths(prevMonths => ({
+      ...prevMonths,
+      [monthKey]: !prevMonths[monthKey]
+    }));
+  };
+
   const isFirstDayOfMonth = (index) => {
     if (index === 0) return true;
     const currentMonth = new Date(days[index].date + 'T00:00:00').getMonth();
@@ -263,30 +277,26 @@ const CrochetTempTracker = () => {
       daysWithDividers.push(day);
       
       const nextDay = days[index + 1];
-      if (nextDay) {
-        const currentMonth = new Date(day.date + 'T00:00:00').getMonth();
-        const nextMonth = new Date(nextDay.date + 'T00:00:00').getMonth();
-        
-        if (currentMonth !== nextMonth) {
-          const dividerId = `${day.date}-divider`;
-          const savedDividers = localStorage.getItem(storageKey('dividers'));
-          let dividerCompleted = false;
-          
-          if (savedDividers) {
-            const parsed = JSON.parse(savedDividers);
-            const saved = parsed.find(d => d.id === dividerId);
-            if (saved) dividerCompleted = saved.completed;
-          }
-          
-          daysWithDividers.push({
-            date: dividerId,
-            dateObj: new Date(day.date + 'T00:00:00'),
-            temp: null,
-            color: { name: 'White (Month Divider)', hex: '#FFFFFF' },
-            completed: dividerCompleted,
-            isDivider: true
-          });
+      if (!nextDay || new Date(day.date + 'T00:00:00').getMonth() !== new Date(nextDay.date + 'T00:00:00').getMonth()) {
+        const dividerId = `${day.date}-divider`;
+        const savedDividers = localStorage.getItem(storageKey('dividers'));
+        let dividerCompleted = false;
+
+        if (savedDividers) {
+          const parsed = JSON.parse(savedDividers);
+          const saved = parsed.find(d => d.id === dividerId);
+          if (saved) dividerCompleted = saved.completed;
         }
+
+        daysWithDividers.push({
+          date: dividerId,
+          dividerDate: day.date,
+          dateObj: new Date(day.date + 'T00:00:00'),
+          temp: null,
+          color: { name: 'White (Month Divider)', hex: '#FFFFFF' },
+          completed: dividerCompleted,
+          isDivider: true
+        });
       }
     });
     
@@ -296,11 +306,15 @@ const CrochetTempTracker = () => {
   const displayDays = getDaysWithDividers();
 
   const filteredDays = displayDays.filter(day => {
-    if (day.isDivider) return true;
+    if (day.isDivider) return !day.completed;
+    const monthKey = getMonthKey(day.date);
+    if (collapsedMonths[monthKey]) return false;
     if (filter === 'completed') return day.completed;
     if (filter === 'incomplete') return !day.completed;
     return true;
   });
+
+  const visibleMonths = Array.from(new Set(days.map(day => getMonthKey(day.date))));
 
   const colorLegendItems = [
     { name: 'Gray', hex: '#9CA3AF', range: '< 20°F' },
@@ -758,21 +772,41 @@ const CrochetTempTracker = () => {
           </aside>
 
           <section className="space-y-2 pb-8 min-w-0">
-          {filteredDays.map((day) => {
-            const originalIndex = days.findIndex(d => d.date === day.date);
-            const isMonthDivider = day.isDivider;
-            
+          {visibleMonths.map(monthKey => {
+            const monthDays = days.filter(day => getMonthKey(day.date) === monthKey);
+            const monthComplete = monthDays.length > 0 && monthDays.every(day => day.completed);
+            const monthDisplayDays = filteredDays.filter(day => getMonthKey(day.date) === monthKey);
+            const monthDate = monthDays[0]?.date;
+
+            if (monthComplete && filter === 'incomplete') return null;
+
             return (
-              <React.Fragment key={day.date}>
-                {!isMonthDivider && isFirstDayOfMonth(originalIndex) && (
-                  <div className="pt-4 pb-2">
-                    <h2 className={`text-lg font-semibold px-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
-                      {getMonthName(day.date)}
-                    </h2>
-                  </div>
-                )}
-              
-                <div
+              <React.Fragment key={monthKey}>
+                <div className="pt-4 pb-2">
+                  <button
+                    onClick={() => toggleMonth(monthKey)}
+                    className={`w-full flex items-center justify-between rounded-lg px-2 py-2 text-left transition-colors ${
+                      darkMode ? 'hover:bg-slate-800' : 'hover:bg-white'
+                    }`}
+                    aria-expanded={!collapsedMonths[monthKey]}
+                  >
+                    <span className={`text-lg font-semibold ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+                      {getMonthName(monthDate)}
+                    </span>
+                    {collapsedMonths[monthKey] ? (
+                      <ChevronDown className={`w-5 h-5 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`} />
+                    ) : (
+                      <ChevronUp className={`w-5 h-5 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`} />
+                    )}
+                  </button>
+                </div>
+
+                {!collapsedMonths[monthKey] && monthDisplayDays.map(day => {
+                  const isMonthDivider = day.isDivider;
+
+                  return (
+                    <div
+                      key={day.date}
                   onClick={() => setSelectedDay(day)}
                   className={`rounded-xl shadow-sm p-4 cursor-pointer hover:shadow-md transition-all ${
                     darkMode ? 'bg-slate-800 hover:bg-slate-750' : 'bg-white'
@@ -797,7 +831,7 @@ const CrochetTempTracker = () => {
                             Month Divider
                           </div>
                           <div className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                            White • Separator Row
+                            {formatDate(day.dividerDate)} • White • Separator Row
                           </div>
                         </>
                       ) : (
@@ -826,6 +860,8 @@ const CrochetTempTracker = () => {
                     )}
                   </div>
                 </div>
+                  );
+                })}
               </React.Fragment>
             );
           })}
